@@ -1,0 +1,22 @@
+{
+  "version": "0.9.0-beta",
+  "release_date": "2026-04-16",
+  "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
+  "changelog": [
+    {
+      "version": "0.9.0-beta",
+      "date": "2026-04-16",
+      "notes": [
+        "Initial beta release",
+        "Twitch, TikTok, YouTube Live chat support",
+        "Multi-streamer room system with public room listing",
+        "BTTV/FFZ emote support with hover tooltips",
+        "Real Twitch badge images",
+        "Scrollable overlay with smart auto-scroll",
+        "Native pop-out chat window",
+        "Encrypted settings backup/restore",
+        "SQLite chat history logging"
+      ]
+    }
+  ]
+}
