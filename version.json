@@ -1,11 +1,28 @@
 {
-  "version": "0.9.0-beta",
-  "release_date": "2026-04-16",
+  "version": "0.9.1",
+  "release_date": "2026-04-19",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
     {
+      "version": "0.9.1",
+      "date": "2026-04-19",
+      "github_tag": "v0.9.1",
+      "github_title": "plagComms v0.9.1",
+      "notes": [
+        "BTTV emote support for YouTube Live Chat",
+        "Animated emote support (GIF emotes now animate in native chat window)",
+        "7TV emote support for Twitch chat",
+        "Announcement messages now show a rainbow border highlight",
+        "Channel point redemptions now display the reward name correctly",
+        "YouTube API quota exceeded no longer spams the activity log — pauses 1 hour and retries",
+        "Build script now auto-names the exe with the version number"
+      ]
+    },
+    {
       "version": "0.9.0-beta",
       "date": "2026-04-16",
+      "github_tag": "v0.9.0-beta",
+      "github_title": "plagComms v0.9.0-beta — Initial Release",
       "notes": [
         "Initial beta release",
         "Twitch, TikTok, YouTube Live chat support",
