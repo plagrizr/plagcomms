@@ -1,14 +1,25 @@
 {
-  "version": "0.9.7",
+  "version": "0.9.8",
   "release_date": "2026-04-20",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.8",
+      "date": "2026-04-20",
+      "github_tag": "v0.9.8",
+      "github_title": "plagComms v0.9.8",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.8/plagComms-0.9.8.exe",
+      "notes": [
+        "Fixed Update banner button being cut off on the right edge",
+        "Fixed Install Update immediately failing \u00e2\u20ac\u201d auto-update now correctly downloads the release exe"
+      ]
+    },
     {
       "version": "0.9.7",
       "date": "2026-04-20",
       "github_tag": "v0.9.7",
       "github_title": "plagComms v0.9.7",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.7/",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.7/plagComms-0.9.7.exe",
       "notes": [
         "Twitch Shared Chat toggle - show messages from partner channels in a shared session (off by default)"
       ]
@@ -18,7 +29,7 @@
       "date": "2026-04-20",
       "github_tag": "v0.9.6",
       "github_title": "plagComms v0.9.6",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.6/",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.6/plagComms-0.9.6.exe",
       "notes": [
         "Fixed YouTube showing Login button despite already being authenticated",
         "Fixed clicking Login doing nothing with no feedback when token already exists",
@@ -31,7 +42,7 @@
       "date": "2026-04-19",
       "github_tag": "v0.9.5",
       "github_title": "plagComms v0.9.5",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.5/",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.5/plagComms-0.9.5.exe",
       "notes": [
         "Fixed TikTok custom emotes not rendering in native chat window",
         "Added raw comment debug logging to tiktok_debug.log to diagnose emote format issues"
@@ -42,7 +53,7 @@
       "date": "2026-04-19",
       "github_tag": "v0.9.4",
       "github_title": "plagComms v0.9.4",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.4/",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.4/plagComms-0.9.4.exe",
       "notes": [
         "YouTube quota exceeded now sleeps until midnight PT instead of a flat 1 hour",
         "Quota reset timestamp is persisted so app restarts no longer immediately retry when quota is still exhausted",
@@ -54,7 +65,7 @@
       "date": "2026-04-19",
       "github_tag": "v0.9.3",
       "github_title": "plagComms v0.9.3",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.3/",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.3/plagComms-0.9.3.exe",
       "notes": [
         "TikTok custom emotes - drop PNG/GIF files into the tiktok_emotes/ folder and they render as images in chat",
         "TikTok native bracket emotes (e.g. [laugh], [heart]) now convert to emoji automatically",
@@ -66,7 +77,7 @@
       "date": "2026-04-19",
       "github_tag": "v0.9.2",
       "github_title": "plagComms v0.9.2",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.2/",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.2/plagComms-0.9.2.exe",
       "notes": [
         "One-click in-app auto-update - install new versions without leaving plagComms"
       ]
@@ -100,9 +111,7 @@
         "BTTV/FFZ emote support with hover tooltips",
         "Real Twitch badge images",
         "Scrollable overlay with smart auto-scroll",
-        "Native pop-out chat window",
-        "Encrypted settings backup/restore",
-        "SQLite chat history logging"
+        "Native pop-out chat window"
       ]
     }
   ]
