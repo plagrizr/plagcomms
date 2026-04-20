@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.1  
+> **Current Version:** 0.9.2  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -109,6 +109,9 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.2 — 2026-04-19
+- One-click in-app auto-update — install new versions without leaving plagComms
 
 ### 0.9.1 — 2026-04-19
 - BTTV emote support for YouTube Live Chat
