@@ -1,8 +1,42 @@
 {
-  "version": "0.9.4",
-  "release_date": "2026-04-19",
+  "version": "0.9.7",
+  "release_date": "2026-04-20",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.7",
+      "date": "2026-04-20",
+      "github_tag": "v0.9.7",
+      "github_title": "plagComms v0.9.7",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.7/",
+      "notes": [
+        "Twitch Shared Chat toggle - show messages from partner channels in a shared session (off by default)"
+      ]
+    },
+    {
+      "version": "0.9.6",
+      "date": "2026-04-20",
+      "github_tag": "v0.9.6",
+      "github_title": "plagComms v0.9.6",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.6/",
+      "notes": [
+        "Fixed YouTube showing Login button despite already being authenticated",
+        "Fixed clicking Login doing nothing with no feedback when token already exists",
+        "Added Re-authenticate button to force a fresh Google login without losing settings",
+        "Activity log now shows quota status immediately when starting YouTube with an active quota gate"
+      ]
+    },
+    {
+      "version": "0.9.5",
+      "date": "2026-04-19",
+      "github_tag": "v0.9.5",
+      "github_title": "plagComms v0.9.5",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.5/",
+      "notes": [
+        "Fixed TikTok custom emotes not rendering in native chat window",
+        "Added raw comment debug logging to tiktok_debug.log to diagnose emote format issues"
+      ]
+    },
     {
       "version": "0.9.4",
       "date": "2026-04-19",
@@ -10,8 +44,8 @@
       "github_title": "plagComms v0.9.4",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.4/",
       "notes": [
-        "YouTube quota exceeded now sleeps until midnight PT (exact reset time) instead of a flat 1 hour",
-        "Quota reset timestamp is persisted to settings \u00e2\u20ac\u201d app restarts no longer immediately retry when quota is still exhausted",
+        "YouTube quota exceeded now sleeps until midnight PT instead of a flat 1 hour",
+        "Quota reset timestamp is persisted so app restarts no longer immediately retry when quota is still exhausted",
         "BTTV emotes for YouTube are now loaded once per session instead of on every reconnect attempt"
       ]
     },
@@ -22,9 +56,9 @@
       "github_title": "plagComms v0.9.3",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.3/",
       "notes": [
-        "TikTok custom emotes \u00e2\u20ac\u201d drop PNG/GIF files into the tiktok_emotes/ folder and they render as images in chat",
+        "TikTok custom emotes - drop PNG/GIF files into the tiktok_emotes/ folder and they render as images in chat",
         "TikTok native bracket emotes (e.g. [laugh], [heart]) now convert to emoji automatically",
-        "Custom emotes reload on every TikTok reconnect \u00e2\u20ac\u201d no app restart needed after adding new emotes"
+        "Custom emotes reload on every TikTok reconnect so no app restart is needed after adding new emotes"
       ]
     },
     {
@@ -34,7 +68,7 @@
       "github_title": "plagComms v0.9.2",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.2/",
       "notes": [
-        "One-click in-app auto-update \u00e2\u20ac\u201d install new versions without leaving plagComms"
+        "One-click in-app auto-update - install new versions without leaving plagComms"
       ]
     },
     {
@@ -57,7 +91,7 @@
       "version": "0.9.0-beta",
       "date": "2026-04-16",
       "github_tag": "v0.9.0-beta",
-      "github_title": "plagComms v0.9.0-beta \u00e2\u20ac\u201d Initial Release",
+      "github_title": "plagComms v0.9.0-beta - Initial Release",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.0-beta/plagComms-0.9.0-beta.exe",
       "notes": [
         "Initial beta release",

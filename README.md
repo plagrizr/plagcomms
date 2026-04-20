@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.4  
+> **Current Version:** 0.9.5  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -109,6 +109,10 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.5 — 2026-04-19
+- Fixed TikTok custom emotes not rendering in native chat window
+- Added raw comment debug logging to `tiktok_debug.log` to diagnose emote format
 
 ### 0.9.4 — 2026-04-19
 - YouTube quota exceeded now sleeps until midnight PT (exact reset time) instead of a flat 1 hour
