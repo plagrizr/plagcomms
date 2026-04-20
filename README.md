@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.2  
+> **Current Version:** 0.9.4  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -109,6 +109,16 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.4 — 2026-04-19
+- YouTube quota exceeded now sleeps until midnight PT (exact reset time) instead of a flat 1 hour
+- Quota reset timestamp is persisted to settings — app restarts no longer immediately retry when quota is still exhausted
+- BTTV emotes for YouTube are now loaded once per session instead of on every reconnect attempt
+
+### 0.9.3 — 2026-04-19
+- TikTok custom emotes — drop PNG/GIF files into the `tiktok_emotes/` folder and they render as images in chat
+- TikTok native bracket emotes (e.g. `[laugh]`, `[heart]`) now convert to emoji automatically
+- Custom emotes reload on every TikTok reconnect — no app restart needed after adding new emotes
 
 ### 0.9.2 — 2026-04-19
 - One-click in-app auto-update — install new versions without leaving plagComms
