@@ -1,8 +1,18 @@
 {
-  "version": "0.9.8",
+  "version": "0.9.9",
   "release_date": "2026-04-20",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.9",
+      "date": "2026-04-20",
+      "github_tag": "v0.9.9",
+      "github_title": "plagComms v0.9.9",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.9/plagComms-0.9.9.exe",
+      "notes": [
+        "Compact mode - Appearance setting that collapses each message to a single line (badge + username: message), with long messages wrapping. Works in both the pop-out window and HTML overlay"
+      ]
+    },
     {
       "version": "0.9.8",
       "date": "2026-04-20",
@@ -11,7 +21,7 @@
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.8/plagComms-0.9.8.exe",
       "notes": [
         "Fixed Update banner button being cut off on the right edge",
-        "Fixed Install Update immediately failing \u00e2\u20ac\u201d auto-update now correctly downloads the release exe"
+        "Fixed Install Update immediately failing - auto-update now correctly downloads the release exe"
       ]
     },
     {
