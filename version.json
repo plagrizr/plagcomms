@@ -1,8 +1,21 @@
 {
-  "version": "0.9.11",
+  "version": "0.9.12",
   "release_date": "2026-04-21",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.12",
+      "date": "2026-04-21",
+      "github_tag": "v0.9.12",
+      "github_title": "plagComms v0.9.12",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.12/plagComms-0.9.12.exe",
+      "notes": [
+        "Add-ons support \u00e2\u20ac\u201d external tools (e.g. plagLerts) can now connect to a secondary WebSocket endpoint (/addons/ws) and receive the full event stream",
+        "Add-ons endpoint is disabled by default with zero impact on existing behavior",
+        "Optional secret token for authenticating add-on connections",
+        "New Add-ons page in the sidebar with enable toggle, token field, live connection count, and one-click URL copy"
+      ]
+    },
     {
       "version": "0.9.11",
       "date": "2026-04-21",
