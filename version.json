@@ -1,16 +1,48 @@
 {
-  "version": "0.9.9",
-  "release_date": "2026-04-20",
+  "version": "0.9.11",
+  "release_date": "2026-04-21",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
     {
+      "version": "0.9.11",
+      "date": "2026-04-21",
+      "github_tag": "v0.9.11",
+      "github_title": "plagComms v0.9.11",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.11/plagComms-0.9.11.exe",
+      "notes": [
+        "Fixed YouTube channel name showing blank after re-authentication when API quota was exhausted",
+        "App now preserves the last known channel name instead of overwriting it with an empty string",
+        "Fixed activity log spam \u00e2\u20ac\u201d identical consecutive status messages are now deduplicated",
+        "Replaced hundreds of repeated 'Watching for your live stream to start\u00e2\u20ac\u00a6' lines with a single entry that only updates when something actually changes"
+      ]
+    },
+    {
+      "version": "0.9.10",
+      "date": "2026-04-21",
+      "github_tag": "v0.9.10",
+      "github_title": "plagComms v0.9.10",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.10/plagComms-0.9.10.exe",
+      "notes": [
+        "Fixed YouTube connection dropping after 1-2 hours and not recovering",
+        "YouTube now reads the real token expiry from Google's response instead of assuming 3600s",
+        "YouTube now detects invalid_grant (revoked/expired session) and tells you to Re-authenticate instead of silently retrying forever",
+        "YouTube now detects a stale live chat ID (404/410) and immediately re-queries the broadcast instead of polling a dead endpoint",
+        "After 8 consecutive poll failures YouTube reconnects automatically rather than staying stuck",
+        "Reconnect attempts are now logged so you can see the app is actively trying",
+        "Fixed a missing disconnected signal when a mid-stream token refresh fails"
+      ]
+    },
+    {
       "version": "0.9.9",
-      "date": "2026-04-20",
+      "date": "2026-04-21",
       "github_tag": "v0.9.9",
       "github_title": "plagComms v0.9.9",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.9/plagComms-0.9.9.exe",
       "notes": [
-        "Compact mode - Appearance setting that collapses each message to a single line (badge + username: message), with long messages wrapping. Works in both the pop-out window and HTML overlay"
+        "Sub and gift sub events are now visually prominent - purple glow for subs, gold glow for gift subs, in both pop-out chat and HTML overlay",
+        "Sub messages now include total months, month streak, and tier (e.g. '\u00f0\u0178\u017d\u2030 user resubscribed!  14 months total  \u00f0\u0178\u201d\u00a5 6-month streak')",
+        "Resub personal messages are shown as a second line below the sub event",
+        "Fixed compact mode messages not wrapping in the pop-out chat window"
       ]
     },
     {
