@@ -1,8 +1,20 @@
 {
-  "version": "0.9.20",
+  "version": "0.9.21",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.21",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.21",
+      "github_title": "plagComms v0.9.21",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.21/plagComms-0.9.21.exe",
+      "notes": [
+        "Fixed auto-updater: DETACHED_PROCESS and CREATE_NEW_CONSOLE are mutually exclusive Windows flags - combining them caused undefined behavior where the updater bat silently failed to run",
+        "Fixed auto-updater: shell=True with extra quoting caused cmd.exe to misparse the bat path",
+        "Updater now launches via cmd.exe directly with no flag conflicts and a visible console window"
+      ]
+    },
     {
       "version": "0.9.20",
       "date": "2026-04-22",
