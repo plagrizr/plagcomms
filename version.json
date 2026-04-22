@@ -1,8 +1,22 @@
 {
-  "version": "0.9.16",
+  "version": "0.9.17",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.17",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.17",
+      "github_title": "plagComms v0.9.17",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.17/plagComms-0.9.17.exe",
+      "notes": [
+        "Fixed animated emotes no longer animating in pop-out chat (regression from 0.9.15)",
+        "Fixed multiple emotes in one message not all showing in pop-out chat (regression from 0.9.15)",
+        "Fixed long emote messages overflowing pop-out chat width",
+        "Font size setting now scales username labels in pop-out chat",
+        "Emote image size in pop-out chat now scales with font size"
+      ]
+    },
     {
       "version": "0.9.16",
       "date": "2026-04-22",
