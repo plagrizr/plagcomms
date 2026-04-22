@@ -1,8 +1,19 @@
 {
-  "version": "0.9.15",
+  "version": "0.9.16",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.16",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.16",
+      "github_title": "plagComms v0.9.16",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.16/plagComms-0.9.16.exe",
+      "notes": [
+        "Fixed /me action messages showing as '[] ACTION text' \u00e2\u20ac\u201d now renders correctly as italicized text in the sender's username color",
+        "Action message fix applies to both the pop-out chat window and the HTML overlay"
+      ]
+    },
     {
       "version": "0.9.15",
       "date": "2026-04-22",
