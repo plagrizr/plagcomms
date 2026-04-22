@@ -1,8 +1,21 @@
 {
-  "version": "0.9.22",
+  "version": "0.9.23",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.23",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.23",
+      "github_title": "plagComms v0.9.23",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.23/plagComms-0.9.23.exe",
+      "notes": [
+        "Fixed multiple TikTok emotes in one message - all emotes now render instead of just the first one",
+        "Fixed TikTok emote-only messages now show all emotes correctly in both pop-out chat and HTML overlay",
+        "Fixed HTML overlay showing 'did something' for TikTok like events - now shows '❤️ user liked ×N!'",
+        "HTML overlay and pop-out chat now have matching emote rendering logic"
+      ]
+    },
     {
       "version": "0.9.22",
       "date": "2026-04-22",
@@ -86,7 +99,7 @@
       "github_title": "plagComms v0.9.16",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.16/plagComms-0.9.16.exe",
       "notes": [
-        "Fixed /me action messages showing as '[] ACTION text' \u00e2\u20ac\u201d now renders correctly as italicized text in the sender's username color",
+        "Fixed /me action messages showing as '[] ACTION text' â€” now renders correctly as italicized text in the sender's username color",
         "Action message fix applies to both the pop-out chat window and the HTML overlay"
       ]
     },
@@ -97,10 +110,10 @@
       "github_title": "plagComms v0.9.15",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.15/plagComms-0.9.15.exe",
       "notes": [
-        "Fixed emote messages overflowing the pop-out chat width \u00e2\u20ac\u201d emotes now wrap correctly alongside long text",
+        "Fixed emote messages overflowing the pop-out chat width â€” emotes now wrap correctly alongside long text",
         "Overlay and Pop-out Chat settings are now separated into two side-by-side columns in the Appearance page",
         "Pop-out Chat has its own independent Max messages, Font size, and Compact mode settings",
-        "Removed Save button from Appearance page \u00e2\u20ac\u201d settings save automatically with a small toast notification in the top-right corner"
+        "Removed Save button from Appearance page â€” settings save automatically with a small toast notification in the top-right corner"
       ]
     },
     {
@@ -120,7 +133,7 @@
       "github_title": "plagComms v0.9.13",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.13/plagComms-0.9.13.exe",
       "notes": [
-        "Pop-out chat now has an Always on Top toggle button \u00e2\u20ac\u201d keeps the chat window above all other apps",
+        "Pop-out chat now has an Always on Top toggle button â€” keeps the chat window above all other apps",
         "Always on Top preference is saved and restored when you reopen the pop-out",
         "Updates page now checks for new versions every 60 seconds automatically",
         "Added Check Now button on the Updates page so you can manually trigger a check without restarting",
@@ -134,7 +147,7 @@
       "github_title": "plagComms v0.9.12",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.12/plagComms-0.9.12.exe",
       "notes": [
-        "Add-ons support \u00e2\u20ac\u201d external tools (e.g. plagLerts) can now connect to a secondary WebSocket endpoint (/addons/ws) and receive the full event stream",
+        "Add-ons support â€” external tools (e.g. plagLerts) can now connect to a secondary WebSocket endpoint (/addons/ws) and receive the full event stream",
         "Add-ons endpoint is disabled by default with zero impact on existing behavior",
         "Optional secret token for authenticating add-on connections",
         "New Add-ons page in the sidebar with enable toggle, token field, live connection count, and one-click URL copy"
@@ -149,8 +162,8 @@
       "notes": [
         "Fixed YouTube channel name showing blank after re-authentication when API quota was exhausted",
         "App now preserves the last known channel name instead of overwriting it with an empty string",
-        "Fixed activity log spam \u00e2\u20ac\u201d identical consecutive status messages are now deduplicated",
-        "Replaced hundreds of repeated 'Watching for your live stream to start\u00e2\u20ac\u00a6' lines with a single entry that only updates when something actually changes"
+        "Fixed activity log spam â€” identical consecutive status messages are now deduplicated",
+        "Replaced hundreds of repeated 'Watching for your live stream to startâ€¦' lines with a single entry that only updates when something actually changes"
       ]
     },
     {
@@ -177,7 +190,7 @@
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.9/plagComms-0.9.9.exe",
       "notes": [
         "Sub and gift sub events are now visually prominent - purple glow for subs, gold glow for gift subs, in both pop-out chat and HTML overlay",
-        "Sub messages now include total months, month streak, and tier (e.g. '\u00f0\u0178\u017d\u2030 user resubscribed!  14 months total  \u00f0\u0178\u201d\u00a5 6-month streak')",
+        "Sub messages now include total months, month streak, and tier (e.g. 'ðŸŽ‰ user resubscribed!  14 months total  ðŸ”¥ 6-month streak')",
         "Resub personal messages are shown as a second line below the sub event",
         "Fixed compact mode messages not wrapping in the pop-out chat window"
       ]
