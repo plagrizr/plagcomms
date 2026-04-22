@@ -1,8 +1,21 @@
 {
-  "version": "0.9.18",
+  "version": "0.9.19",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.19",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.19",
+      "github_title": "plagComms v0.9.19",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.19/plagComms-0.9.19.exe",
+      "notes": [
+        "Version number now shows correctly in dashboard and sidebar (was stuck at v0.9.0-beta)",
+        "All versions now display with -beta suffix",
+        "TikTok emote-only messages no longer show as blank rows - show [emote] placeholder when native emote data is present, silently skip if truly empty",
+        "Added comprehensive CommentEvent field logging to tiktok_debug.log to diagnose native emote format"
+      ]
+    },
     {
       "version": "0.9.18",
       "date": "2026-04-22",
