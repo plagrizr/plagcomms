@@ -1,8 +1,22 @@
 {
-  "version": "0.9.12",
-  "release_date": "2026-04-21",
+  "version": "0.9.13",
+  "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.13",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.13",
+      "github_title": "plagComms v0.9.13",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.13/plagComms-0.9.13.exe",
+      "notes": [
+        "Pop-out chat now has an Always on Top toggle button \u00e2\u20ac\u201d keeps the chat window above all other apps",
+        "Always on Top preference is saved and restored when you reopen the pop-out",
+        "Updates page now checks for new versions every 60 seconds automatically",
+        "Added Check Now button on the Updates page so you can manually trigger a check without restarting",
+        "Last checked time shown next to the Check Now button"
+      ]
+    },
     {
       "version": "0.9.12",
       "date": "2026-04-21",
