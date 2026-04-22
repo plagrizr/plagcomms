@@ -1,8 +1,31 @@
 {
-  "version": "0.9.13",
+  "version": "0.9.15",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.15",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.15",
+      "github_title": "plagComms v0.9.15",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.15/plagComms-0.9.15.exe",
+      "notes": [
+        "Fixed emote messages overflowing the pop-out chat width \u00e2\u20ac\u201d emotes now wrap correctly alongside long text",
+        "Overlay and Pop-out Chat settings are now separated into two side-by-side columns in the Appearance page",
+        "Pop-out Chat has its own independent Max messages, Font size, and Compact mode settings",
+        "Removed Save button from Appearance page \u00e2\u20ac\u201d settings save automatically with a small toast notification in the top-right corner"
+      ]
+    },
+    {
+      "version": "0.9.14",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.14",
+      "github_title": "plagComms v0.9.14",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.14/plagComms-0.9.14.exe",
+      "notes": [
+        "Font size setting now applies to the pop-out chat window, not just the HTML overlay"
+      ]
+    },
     {
       "version": "0.9.13",
       "date": "2026-04-22",
@@ -175,12 +198,10 @@
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.0-beta/plagComms-0.9.0-beta.exe",
       "notes": [
         "Initial beta release",
-        "Twitch, TikTok, YouTube Live chat support",
-        "Multi-streamer room system with public room listing",
-        "BTTV/FFZ emote support with hover tooltips",
-        "Real Twitch badge images",
-        "Scrollable overlay with smart auto-scroll",
-        "Native pop-out chat window"
+        "Twitch, TikTok, and YouTube Live chat aggregation",
+        "HTML overlay for OBS browser source",
+        "Native pop-out chat window",
+        "Per-platform color coding and event notifications"
       ]
     }
   ]
