@@ -1,8 +1,21 @@
 {
-  "version": "0.9.19",
+  "version": "0.9.20",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.20",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.20",
+      "github_title": "plagComms v0.9.20",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.20/plagComms-0.9.20.exe",
+      "notes": [
+        "Fixed 'still running in the background' tray popup appearing during auto-update quit",
+        "Auto-updater now retries the file copy up to 12 times so a slow process exit or brief AV scan delay no longer silently kills the update",
+        "Downloaded exe is validated as a real Windows executable before installing - shows an error if antivirus blocked the download or the release asset is missing",
+        "Updater window stays visible during install so any copy errors are shown with instructions instead of disappearing silently"
+      ]
+    },
     {
       "version": "0.9.19",
       "date": "2026-04-22",
