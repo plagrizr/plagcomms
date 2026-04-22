@@ -1,8 +1,20 @@
 {
-  "version": "0.9.21",
+  "version": "0.9.22",
   "release_date": "2026-04-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.22",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.22",
+      "github_title": "plagComms v0.9.22",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.22/plagComms-0.9.22.exe",
+      "notes": [
+        "TikTok native inline emotes now render as images in chat - emotes sent via the TikTok emote picker appear as pictures instead of blank spaces",
+        "Fixed emote-only TikTok messages now display correctly instead of showing a blank row",
+        "Fixed text around TikTok native emotes rendering correctly - placeholder space is stripped and surrounding words are preserved"
+      ]
+    },
     {
       "version": "0.9.21",
       "date": "2026-04-22",
