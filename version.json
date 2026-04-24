@@ -1,8 +1,42 @@
 {
-  "version": "0.9.23",
-  "release_date": "2026-04-22",
+  "version": "0.9.26",
+  "release_date": "2026-04-23",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.26",
+      "date": "2026-04-23",
+      "github_tag": "v0.9.26",
+      "github_title": "plagComms v0.9.26",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.26/plagComms-0.9.26.exe",
+      "notes": [
+        "Fixed YouTube horizontal (regular) streams not appearing - YouTube API defaults to event-type broadcasts only; added broadcastType=all so permanent stream-key broadcasts are found",
+        "https:// links in chat messages are now clickable in both the pop-out chat and HTML overlay - click to open in browser"
+      ]
+    },
+    {
+      "version": "0.9.25",
+      "date": "2026-04-23",
+      "github_tag": "v0.9.25",
+      "github_title": "plagComms v0.9.25",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.25/plagComms-0.9.25.exe",
+      "notes": [
+        "Fixed pop-out chat layout: TikTok emotes no longer push the screen sideways - text now word-wraps on its own row, emotes appear cleanly below it",
+        "Inline Twitch emotes continue to render inline as before"
+      ]
+    },
+    {
+      "version": "0.9.24",
+      "date": "2026-04-22",
+      "github_tag": "v0.9.24",
+      "github_title": "plagComms v0.9.24",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.24/plagComms-0.9.24.exe",
+      "notes": [
+        "Fixed TikTok native emotes not showing when they appear after text (e.g. 'finally 🔥🔥🔥') - TikTok places emote indices past the text end, which was wrongly treated as invalid",
+        "Fixed multiple trailing emotes all rendering correctly instead of being skipped",
+        "Fix applies to both pop-out chat and HTML overlay"
+      ]
+    },
     {
       "version": "0.9.23",
       "date": "2026-04-22",
