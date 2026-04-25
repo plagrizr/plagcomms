@@ -1,8 +1,24 @@
 {
-  "version": "0.9.27",
+  "version": "0.9.28",
   "release_date": "2026-04-25",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.28",
+      "date": "2026-04-25",
+      "github_tag": "v0.9.28",
+      "github_title": "plagComms v0.9.28",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.28/plagComms-0.9.28.exe",
+      "notes": [
+        "Fixed Twitch emote quality — all native Twitch emotes now use the 3.0 CDN resolution (112px) instead of 1.0 (28px); giant Gigantify emotes are now crisp instead of blurry",
+        "Fixed blank space below Gigantify giant emote in pop-out chat",
+        "Fixed Gigantify emote in OBS overlay stretching to full row width — now renders as a square sized to match message height",
+        "Fixed horizontal chat overlay: Gigantify now shows as a 2x-size inline emote in the chip (was silently dropped)",
+        "Fixed horizontal chat overlay: emote tooltip text (name + 'Twitch') was rendering inline — emotes now show as image-only",
+        "Fixed horizontal chat overlay: VIP Highlight now pulses the chip border with the rainbow glow and fades after the configured duration",
+        "VIP Highlight now also applies to Gigantify emote messages, not just regular chat"
+      ]
+    },
     {
       "version": "0.9.27",
       "date": "2026-04-25",

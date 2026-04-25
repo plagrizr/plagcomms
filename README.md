@@ -110,6 +110,15 @@ Port is configurable in Settings (default: `54473`).
 
 ## Changelog
 
+### 0.9.28 — 2026-04-25
+- Fixed Twitch emote quality — all native Twitch emotes now use the 3.0 CDN resolution (112px) instead of 1.0 (28px); giant Gigantify emotes are now crisp instead of blurry
+- Fixed blank space below Gigantify giant emote in pop-out chat
+- Fixed Gigantify emote in OBS overlay stretching to full row width — now renders as a square sized to match message height
+- Fixed horizontal chat overlay: Gigantify now shows as a 2x-size inline emote in the chip (was silently dropped)
+- Fixed horizontal chat overlay: emote tooltip text (name + "Twitch") was rendering inline — emotes now show as image-only
+- Fixed horizontal chat overlay: VIP Highlight now pulses the chip border with the rainbow glow and fades after the configured duration
+- VIP Highlight now also applies to Gigantify emote messages, not just regular chat
+
 ### 0.9.27 — 2026-04-25
 - **New OBS overlay: Channel Stats** — add `http://localhost:54473/stats-overlay` as a Browser Source to display live follower, subscriber, and viewer counts across Twitch, TikTok, and YouTube; platform cards auto-hide when not connected
 - **Dashboard** — each platform card now shows live channel stats above session counters
