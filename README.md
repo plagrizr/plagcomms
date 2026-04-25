@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.5  
+> **Current Version:** 0.9.27  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -109,6 +109,19 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.27 — 2026-04-25
+- **New OBS overlay: Channel Stats** — add `http://localhost:54473/stats-overlay` as a Browser Source to display live follower, subscriber, and viewer counts across Twitch, TikTok, and YouTube; platform cards auto-hide when not connected
+- **Dashboard** — each platform card now shows live channel stats above session counters
+- Fixed TikTok viewer count showing cumulative unique viewers (~19.8K) instead of concurrent — now uses `m_total` from `RoomUserSeqEvent`
+- Added TikTok **Follower count** and **SuperFan count** to dashboard and stats overlay
+- Fixed TikTok viewer count and channel card not appearing in the stats overlay on connect
+- **Twitch: Gigantify an Emote** — correctly detected via `msg-id=gigantified-emote-message`; emote renders at ~10x size in both pop-out chat and OBS overlay; messages with text before the emote show the text above it
+- TikTok emote-pack claims (EmoteChatEvent) also render giant using the same pipeline
+- Fixed emote messages in pop-out chat causing horizontal overflow — emote rows no longer push the window wider than its bounds
+- **YouTube: Reconnect button** — appears when YouTube drops connection so you can restart the listener without re-authenticating; also shows on token-invalid errors
+- **VIP Highlight** — enter comma-separated usernames in Appearance → VIP Highlight; those users' messages rainbow-cycle (gold → pink → cyan → green) in pop-out and OBS overlay, auto-fading after a configurable number of seconds
+- **Twitch debug mode** — enable "Log all Twitch events" on the Twitch page to print every raw IRC line and EventSub notification to the activity log
 
 ### 0.9.5 — 2026-04-19
 - Fixed TikTok custom emotes not rendering in native chat window

@@ -1,8 +1,30 @@
 {
-  "version": "0.9.26",
-  "release_date": "2026-04-23",
+  "version": "0.9.27",
+  "release_date": "2026-04-25",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.27",
+      "date": "2026-04-25",
+      "github_tag": "v0.9.27",
+      "github_title": "plagComms v0.9.27",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.27/plagComms-0.9.27.exe",
+      "notes": [
+        "New OBS overlay: Channel Stats — add http://localhost:54473/stats-overlay as a Browser Source to show live follower, subscriber, and viewer counts across Twitch, TikTok, and YouTube",
+        "Dashboard now shows live channel stats above session counters for each platform",
+        "Fixed TikTok viewer count showing cumulative (~19.8K) instead of concurrent viewers — now uses m_total from RoomUserSeqEvent",
+        "Added TikTok Follower count and SuperFan count to dashboard and stats overlay",
+        "Fixed TikTok viewer count and channel card not appearing in the stats overlay on connect",
+        "Twitch: Gigantify an Emote now correctly detected via IRC msg-id=gigantified-emote-message — renders the emote at 10x size in both pop-out and OBS overlay",
+        "Gigantify messages with text (e.g. 'hello LUL') show the text above the giant emote",
+        "TikTok emote-pack claims also render giant using the same pipeline",
+        "Fixed emote messages in pop-out chat causing horizontal overflow — emote rows no longer push the window wider than its bounds",
+        "YouTube: added Reconnect button that appears when YouTube drops connection — restarts the listener instantly without re-authenticating",
+        "YouTube: fixed listener not emitting disconnected when a token error occurs before first connect, so Reconnect button always appears correctly",
+        "New: VIP Highlight — enter comma-separated usernames in Appearance settings; their messages rainbow-cycle gold → pink → cyan → green in pop-out and OBS overlay, auto-fading after a configurable number of seconds",
+        "Twitch debug mode — enable 'Log all Twitch events' on the Twitch page to print every raw IRC line and EventSub notification to the activity log"
+      ]
+    },
     {
       "version": "0.9.26",
       "date": "2026-04-23",
