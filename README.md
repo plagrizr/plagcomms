@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.27  
+> **Current Version:** 0.9.31  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -109,6 +109,20 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.31 — 2026-04-28
+- **Fixed YouTube quota exhaustion** — YouTube chat now uses the internal continuation-token API (same as the YouTube web player), which has zero quota cost. OAuth is now used only to find the broadcast video ID on connect (1 unit) and fetch channel stats every 3 minutes (~576 units/day total vs ~86,400 previously). Chat messages, superchats, and memberships all flow through the continuation path
+- **Per-platform debug log toggles** — Twitch Settings now has separate toggles for Twitch IRC/EventSub, TikTok badge/gift verbose logs, and YouTube chat debug. All off by default; TikTok toggle gates the tiktok_debug.log file level directly
+
+### 0.9.30 — 2026-04-26
+- TikTok badge enrichment — mod, fan club level, top gifter rank, title gifter, diamond level, super fan status extracted from badge_list and shown as badges on all TikTok events in both overlay and pop-out; icon images pulled from combine_badge_struct; text pills for badges without icons
+- Fixed TikTok gift combos: repeat_count is cumulative so streakable gifts now fire once when the streak ends with the correct total (8 roses → ×8, not ×44); non-streakable gifts debounce over 1.5s
+- Pop-out chat: TikTok text badges (no icon URL) render as small labeled pills instead of invisible empty boxes
+
+### 0.9.29 — 2026-04-25
+- BTTV/FFZ/7TV emotes now refresh every 15 minutes while connected — emotes added mid-stream are picked up automatically without reconnecting
+- Fixed YouTube going stale mid-stream — polling interval capped at 30s, staleness watchdog forces reconnect after 4 minutes of no response, fail threshold halved for faster detection
+- Fixed YouTube quota wait message spamming the activity log — now logged once when quota gate is entered instead of every 5 minutes
 
 ### 0.9.28 — 2026-04-25
 - Fixed Twitch emote quality — all native Twitch emotes now use the 3.0 CDN resolution (112px) instead of 1.0 (28px); giant Gigantify emotes are now crisp instead of blurry

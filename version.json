@@ -1,8 +1,44 @@
 {
-  "version": "0.9.28",
-  "release_date": "2026-04-25",
+  "version": "0.9.31",
+  "release_date": "2026-04-28",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.31",
+      "date": "2026-04-28",
+      "github_tag": "v0.9.31",
+      "github_title": "plagComms v0.9.31",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.31/plagComms-0.9.31.exe",
+      "notes": [
+        "Fixed YouTube quota exhaustion — chat now uses the internal continuation-token API (zero quota cost); OAuth is used only to find the broadcast video ID and fetch stats every 3 minutes (~580 units/day vs ~86,400 previously)",
+        "Per-platform debug log toggles — separate on/off switches for Twitch IRC, TikTok badge/gift logs, and YouTube chat in the Debug settings card"
+      ]
+    },
+    {
+      "version": "0.9.30",
+      "date": "2026-04-26",
+      "github_tag": "v0.9.30",
+      "github_title": "plagComms v0.9.30",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.30/plagComms-0.9.30.exe",
+      "notes": [
+        "TikTok badge enrichment — mod, fan club level, top gifter rank, title gifter, diamond level, and super fan badges now appear on all TikTok events in the overlay and pop-out",
+        "Fixed TikTok gift combos — streakable gifts now fire once when the streak ends with the correct total count (e.g. 8 roses shows x8, not x44); non-streakable gifts debounce over 1.5s",
+        "Gift events now include total coin/diamond value of the combo",
+        "TikTok text badges (no icon URL) render as small labeled pills in the pop-out instead of invisible empty boxes"
+      ]
+    },
+    {
+      "version": "0.9.29",
+      "date": "2026-04-25",
+      "github_tag": "v0.9.29",
+      "github_title": "plagComms v0.9.29",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.29/plagComms-0.9.29.exe",
+      "notes": [
+        "BTTV/FFZ/7TV emotes now refresh every 15 minutes while connected — emotes added mid-stream are picked up automatically without reconnecting",
+        "Fixed YouTube going stale mid-stream — polling interval capped at 30s, staleness watchdog forces reconnect after 4 minutes of no response, fail threshold halved for faster detection",
+        "Fixed YouTube quota wait message spamming the activity log — now logged once when quota gate is entered instead of every 5 minutes"
+      ]
+    },
     {
       "version": "0.9.28",
       "date": "2026-04-25",
