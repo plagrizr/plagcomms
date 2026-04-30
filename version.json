@@ -1,8 +1,37 @@
 {
-  "version": "0.9.31",
-  "release_date": "2026-04-28",
+  "version": "0.9.32",
+  "release_date": "2026-04-30",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.32",
+      "date": "2026-04-30",
+      "github_tag": "v0.9.32",
+      "github_title": "plagComms v0.9.32 — Bidirectional Chat",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.32/plagComms-0.9.32.exe",
+      "notes": [
+        "Pop-out chat: new chat input bar — plagComms is now bidirectional; type and send messages to your live chat without leaving the app",
+        "Platform selector: choose All connected, Twitch only, or YouTube only; unconfigured platforms are omitted; configured-but-offline platforms are greyed; TikTok shown as coming soon",
+        "Chat input auto-grows from one line up to four lines as text wraps; Enter sends, Shift+Enter inserts a newline; send button greys out when empty",
+        "Emote autocomplete: type ':' followed by 2+ characters to see a popup of matching BTTV/FFZ/7TV emotes; Up/Down navigate, Enter/Tab inserts, Escape dismisses",
+        "Twitch send: POST /helix/chat/messages — requires re-authentication to pick up the new user:write:chat scope",
+        "YouTube send: liveChatMessages.insert — requires re-authentication to pick up the new youtube.force-ssl scope; only available while live",
+        "Fixed 'Failed to load Python DLL' error dialog during in-app updates — updater now uses os._exit(0) to bypass PyInstaller DLL cleanup",
+        "Pop-out chat: incoming raids now show a prominent shoutout card with raider name, viewer count, and a one-click Send Shoutout button",
+        "Fixed duplicate raid cards — IRC and EventSub no longer both show a card; the richer EventSub card (with viewer count) is shown",
+        "Pop-out chat: new ⚔ Raid button in the toolbar — search a channel, preview their avatar, then a 30-second countdown fires the raid (RAID NOW to go immediately)",
+        "Pop-out chat: new 📊 Poll button in the toolbar — enter a question and up to 5 choices, pick a duration, create a Twitch poll in one click",
+        "Pop-out chat: new Mod Actions — enable 'Show mod action buttons' in Twitch settings to add 🗑 Delete, ⏱ Timeout (with duration picker), and 🔨 Ban to every message; off by default",
+        "Delete propagates to all three surfaces: Twitch native chat (API), pop-out window, and the HTML/OBS overlay",
+        "Fixed raider tag not appearing — raiding streamer detected by username match (no raid badge); viewers detected via badges tag (raid/1); both tagged ⚔ Raider · channelname for 10 minutes",
+        "Pop-out chat: new 🎛 Chat button in toolbar — live sub-only, emote-only, unique-chat, follower-only, and slow-mode toggles; auto-polls every 10 seconds so moderator changes are reflected in real time",
+        "Twitch OAuth: added moderator:manage:banned_users, moderator:manage:chat_messages, channel:manage:polls, moderator:manage:chat_settings, and user:write:chat scopes (re-auth required)",
+        "YouTube OAuth: scope upgraded from youtube.readonly to youtube.force-ssl (re-auth required to enable chat sending)",
+        "Fixed YouTube reconnecting every 10-80 seconds during quiet streams — staleness detection is now time-based (4 minutes)",
+        "Fixed YouTube polling too aggressively pre-stream — interval raised to 90s",
+        "Fixed YouTube duplicate messages on reconnect — deduplication by message ID across reconnects"
+      ]
+    },
     {
       "version": "0.9.31",
       "date": "2026-04-28",

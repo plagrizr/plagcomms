@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.31  
+> **Current Version:** 0.9.32  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -41,9 +41,10 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 - Replays the last 200 messages on open
 
 ### Settings & Security
-- Secrets (OAuth tokens, API keys) stored in Windows Credential Manager via `keyring`
+- Secrets (OAuth tokens, API keys) stored in **Windows Credential Manager** via `keyring` — never written to disk in plain text, never sent to any plagComms server
 - All other settings persisted to `%APPDATA%\plagComms\settings.json`
 - Encrypted backup/restore — export all settings and credentials to a file, import on another PC
+- All Twitch API calls go directly from your machine to `api.twitch.tv` — plagComms has no backend
 
 ### Chat Filtering
 - Per-platform event toggles (hide subs, gifts, follows, etc. independently)
@@ -90,9 +91,41 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 
 | Platform | What you need |
 |----------|--------------|
-| Twitch | OAuth token + Client ID + channel name |
+| Twitch | Click **Connect** in the app — opens Twitch's own login page in your browser |
 | TikTok | TikTok API key + username |
 | YouTube | OAuth Client ID + Client Secret (Google API Console) |
+
+---
+
+## Twitch Permissions — What We Ask For and Why
+
+When you connect Twitch, plagComms opens Twitch's official OAuth page and asks for the following permissions. Nothing is collected, stored, or sent to any plagComms server — your token lives only in **Windows Credential Manager** on your own machine.
+
+Every permission is scoped to **your channel only**. plagComms cannot access or modify any other streamer's channel.
+
+| Permission | Plain English | Used For |
+|-----------|--------------|----------|
+| `chat:read` | Read chat messages from your channel | Displaying chat in the overlay and pop-out window |
+| `bits:read` | See who cheered and for how much | Showing cheer/bits events in the overlay |
+| `channel:read:subscriptions` | See new subs and gift subs on your channel | Showing sub and gift-sub events in the overlay |
+| `channel:read:redemptions` | See channel point redemptions | Showing redemption events in the overlay |
+| `moderator:read:followers` | See new follower events | Showing follow alerts in the overlay (Twitch requires this specific scope for the v2 followers API even on your own channel) |
+| `channel:manage:raids` | Start a raid from your channel to another | Powers the **⚔ Raid** button in the pop-out chat window — you pick the target and confirm before anything is sent |
+| `moderator:manage:shoutouts` | Send a `/shoutout` from your channel | Powers the **📣 Send Shoutout** button that appears when someone raids you — never fires automatically |
+| `moderator:manage:banned_users` | Time out or ban a user from your channel | Powers the **⏱ Timeout** and **🔨 Ban** mod action buttons in the pop-out chat window (optional, off by default) |
+| `moderator:manage:chat_messages` | Delete a specific chat message | Powers the **🗑 Delete** mod action button in the pop-out chat window (optional, off by default) |
+| `channel:manage:polls` | Create polls in your channel | Powers the **📊 Poll** button in the pop-out chat toolbar |
+| `moderator:manage:chat_settings` | Read and change chat mode settings (sub-only, slow mode, etc.) | Powers the **🎛 Chat** dropdown in the pop-out toolbar — shows live status and lets you toggle each mode |
+
+### What plagComms does NOT do
+
+- ❌ Does not read or write your chat messages (no `chat:edit` or `chat:write`)
+- ❌ Does not ban, time out, or moderate your chat
+- ❌ Does not read your subscriber list, earnings, or account settings
+- ❌ Does not store your token anywhere except your own PC's Credential Manager
+- ❌ Does not send your token to any plagComms server — all API calls go directly from your machine to `api.twitch.tv`
+
+If you're uncomfortable with any permission, you can revoke plagComms' access at any time under [Twitch → Settings → Connections](https://www.twitch.tv/settings/connections).
 
 ---
 
@@ -109,6 +142,27 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.32 — 2026-04-30 — Bidirectional Chat
+- **Pop-out chat input bar** — plagComms is now bidirectional; type and send messages to your live chat without leaving the app
+- **Platform selector**: choose All connected, Twitch only, or YouTube only; unconfigured platforms are omitted from the list; configured-but-offline platforms are greyed; TikTok listed as coming soon
+- Chat input auto-grows from one line up to four lines as text wraps; **Enter** sends, **Shift+Enter** inserts a newline; send button greys out when the box is empty
+- **Emote autocomplete**: type `:` followed by 2+ characters to see a popup of matching BTTV/FFZ/7TV emotes; Up/Down navigates, Enter or Tab inserts, Escape dismisses; clicking a row also inserts
+- **Twitch send**: `POST /helix/chat/messages` — requires re-authentication to pick up the new `user:write:chat` scope
+- **YouTube send**: `liveChatMessages.insert` — requires re-authentication to pick up the new `youtube.force-ssl` scope; only available while live
+- Fixed "Failed to load Python DLL" error dialog during in-app updates — updater now uses `os._exit(0)` to bypass PyInstaller DLL cleanup
+- Pop-out chat: incoming raids now show a prominent shoutout card with raider name, viewer count, and a one-click **Send Shoutout** button
+- Fixed duplicate raid cards — IRC and EventSub no longer both fire; the richer EventSub card (with viewer count) is shown
+- Pop-out chat: new **⚔ Raid** button in the toolbar — search a channel, preview their avatar, then a 30-second countdown fires the raid (RAID NOW to go immediately)
+- Pop-out chat: new **📊 Poll** button in the toolbar — question, up to 5 choices, duration picker, creates a Twitch poll in one click
+- Pop-out chat: new **Mod Actions** — enable "Show mod action buttons" in Twitch settings to add 🗑 Delete, ⏱ Timeout (with duration picker), and 🔨 Ban to every message; off by default; Delete propagates to native Twitch chat, the pop-out, and the HTML/OBS overlay
+- Fixed raider tags not appearing — raiding streamer detected by username match; raid viewers detected via `badges` tag (`raid/1`); both tagged **⚔ Raider · channelname** for 10 minutes
+- Pop-out chat: new **🎛 Chat** button in toolbar — live sub-only, emote-only, unique-chat, follower-only, and slow-mode toggles; auto-polls every 10 seconds so moderator changes from Twitch are reflected in real time
+- Twitch OAuth: added `moderator:manage:banned_users`, `moderator:manage:chat_messages`, `channel:manage:polls`, `moderator:manage:chat_settings`, and `user:write:chat` scopes (re-auth required)
+- YouTube OAuth: scope upgraded from `youtube.readonly` to `youtube.force-ssl` (re-auth required to enable chat sending)
+- Fixed YouTube reconnecting every 10–80 seconds during quiet streams — staleness detection now time-based (4 minutes)
+- Fixed YouTube polling too aggressively pre-stream — interval raised to 90 s
+- Fixed YouTube duplicate messages on reconnect — deduplication by message ID across reconnects
 
 ### 0.9.31 — 2026-04-28
 - **Fixed YouTube quota exhaustion** — YouTube chat now uses the internal continuation-token API (same as the YouTube web player), which has zero quota cost. OAuth is now used only to find the broadcast video ID on connect (1 unit) and fetch channel stats every 3 minutes (~576 units/day total vs ~86,400 previously). Chat messages, superchats, and memberships all flow through the continuation path
