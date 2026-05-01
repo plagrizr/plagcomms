@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.32  
+> **Current Version:** 0.9.33  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -142,6 +142,12 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.33 — 2026-05-01 - Watch Streaks
+- **Twitch Watch Streaks** — when a viewer shares their stream watch streak via Twitch Power-Ups, it now appears in both the pop-out and OBS overlay with an orange highlight
+- Displays streak count and channel points earned (e.g. `🔥 username is on a 5-stream watch streak!  ·  +350 pts`)
+- Fixed emote autocomplete popup appearing behind the pop-out window when Always on Top is active — popup now uses `WindowStaysOnTopHint` to guarantee it renders above all other windows
+- Fixed `release.bat` producing garbled em dash in GitHub release title on Windows — added `chcp 65001` and `PYTHONUTF8=1`
 
 ### 0.9.32 — 2026-04-30 — Bidirectional Chat
 - **Pop-out chat input bar** — plagComms is now bidirectional; type and send messages to your live chat without leaving the app

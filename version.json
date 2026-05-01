@@ -1,13 +1,26 @@
 {
-  "version": "0.9.32",
-  "release_date": "2026-04-30",
+  "version": "0.9.33",
+  "release_date": "2026-05-01",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.33",
+      "date": "2026-05-01",
+      "github_tag": "v0.9.33",
+      "github_title": "plagComms v0.9.33 - Watch Streaks",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.33/plagComms-0.9.33.exe",
+      "notes": [
+        "Twitch Watch Streaks — when a viewer shares their stream watch streak via Twitch Power-Ups, it now appears in both the pop-out and OBS overlay with an orange highlight",
+        "Displays streak count and channel points earned (e.g. '🔥 username is on a 5-stream watch streak!  ·  +350 pts')",
+        "Fixed emote autocomplete popup appearing behind the pop-out window when Always on Top is active — popup now uses WindowStaysOnTopHint to guarantee it renders above all other windows",
+        "Fixed release.bat producing garbled em dash in GitHub release title on Windows — added chcp 65001 and PYTHONUTF8=1 so Unicode characters in version.json are handled correctly"
+      ]
+    },
     {
       "version": "0.9.32",
       "date": "2026-04-30",
       "github_tag": "v0.9.32",
-      "github_title": "plagComms v0.9.32 — Bidirectional Chat",
+      "github_title": "plagComms v0.9.32 - Bidirectional Chat",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.32/plagComms-0.9.32.exe",
       "notes": [
         "Pop-out chat: new chat input bar — plagComms is now bidirectional; type and send messages to your live chat without leaving the app",
