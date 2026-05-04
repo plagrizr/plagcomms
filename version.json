@@ -1,14 +1,32 @@
 {
-  "version": "0.9.33",
-  "release_date": "2026-05-01",
+  "version": "0.9.34",
+  "release_date": "2026-05-03",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.34",
+      "date": "2026-05-03",
+      "github_tag": "v0.9.34",
+      "github_title": "plagComms v0.9.34 - Room & YouTube Fixes",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.34/plagComms-0.9.34.exe",
+      "notes": [
+        "Fixed room message doubling — messages no longer appear twice when two streamers share a Twitch Shared Chat; works regardless of which version the other streamer is running",
+        "Fixed own-message echo from room — chat messages you send that get relayed back by a partner's instance are now suppressed",
+        "Fixed global emote doubling — BTTV/FFZ emotes that share a name with a native Twitch emote (e.g. PogChamp) were rendering twice",
+        "Fixed missing badges on room-relayed messages — badge URLs are now filled from the local Twitch badge cache when the sending instance did not resolve them",
+        "Fixed room disconnecting permanently on any server error — only auth failures are fatal; transient errors now reconnect with backoff",
+        "Fixed YouTube never connecting when you have many past broadcasts — old completed streams were filling the result cap before the live one; now queries active broadcasts directly",
+        "Fixed YouTube continuation token extraction — replaced a fragile regex with a proper brace-matching JSON extractor that survives YouTube page structure changes",
+        "YouTube session expired popup — when Google invalidates your login token a dialog appears immediately with a Fix Now button that opens YouTube settings and triggers re-authentication in one click",
+        "YouTube pre-stream ready — open plagComms before going live; it polls every 90 seconds and connects automatically when your stream starts"
+      ]
+    },
     {
       "version": "0.9.33",
       "date": "2026-05-01",
       "github_tag": "v0.9.33",
       "github_title": "plagComms v0.9.33 - Watch Streaks",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.33/plagComms-0.9.34.exe",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.33/plagComms-0.9.33.exe",
       "notes": [
         "Twitch Watch Streaks — when a viewer shares their stream watch streak via Twitch Power-Ups, it now appears in both the pop-out and OBS overlay with an orange highlight",
         "Displays streak count and channel points earned (e.g. '🔥 username is on a 5-stream watch streak!  ·  +350 pts')",
