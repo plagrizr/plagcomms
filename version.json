@@ -8,7 +8,7 @@
       "date": "2026-05-01",
       "github_tag": "v0.9.33",
       "github_title": "plagComms v0.9.33 - Watch Streaks",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.33/plagComms-0.9.33.exe",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.33/plagComms-0.9.34.exe",
       "notes": [
         "Twitch Watch Streaks — when a viewer shares their stream watch streak via Twitch Power-Ups, it now appears in both the pop-out and OBS overlay with an orange highlight",
         "Displays streak count and channel points earned (e.g. '🔥 username is on a 5-stream watch streak!  ·  +350 pts')",

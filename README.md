@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.33  
+> **Current Version:** 0.9.34  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -142,6 +142,17 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.34 — 2026-05-03 — Room & YouTube Fixes
+- **Fixed room message doubling** — messages no longer appear twice when two streamers share a Twitch Shared Chat. The fix works in both directions: your instance stops forwarding Shared Chat copies to the room (send side), and incoming room echoes of messages you already displayed are suppressed by Twitch message ID (receive side). Works regardless of which version the other streamer is running
+- **Fixed own-message echo from room** — when your chat messages were relayed back to you by a partner's instance they no longer show as duplicates
+- **Fixed global emote doubling** — BTTV/FFZ emotes that share a name with a native Twitch emote (e.g. PogChamp) were rendering twice; third-party emotes now skip any character range already claimed by a native emote
+- **Fixed missing badges on room-relayed messages** — badge URLs are now filled from the local Twitch badge cache when the sending instance didn't resolve them
+- **Fixed room disconnecting permanently on any server error** — only auth-related server errors (wrong password, room not found) are treated as fatal; all other errors now reconnect with backoff
+- **Fixed YouTube never connecting when you have many past broadcasts** — the broadcast lookup was using `broadcastType=all` with `maxResults=10`, which filled up with old completed streams before reaching the live one. Now queries `broadcastStatus=active` (only live broadcasts) first, then `broadcastStatus=upcoming` for pre-live states
+- **Fixed YouTube continuation token extraction** — replaced a fragile non-greedy regex against `ytInitialData` with a proper brace-matching JSON extractor and recursive token searcher that doesn't break when YouTube changes their page structure
+- **YouTube session expired — popup notification** — when Google invalidates the login token (invalid_grant), plagComms now shows a dialog immediately with a "Fix Now" button that opens YouTube settings and kicks off re-authentication in one click. Previously this was a single line in the activity log that was easy to miss
+- **YouTube pre-stream ready** — plagComms no longer needs to be opened after going live. Open it any time; it polls every 90 seconds and connects automatically when your stream starts. The session-expired dialog ensures token issues are caught and fixed before stream time
 
 ### 0.9.33 — 2026-05-01 - Watch Streaks
 - **Twitch Watch Streaks** — when a viewer shares their stream watch streak via Twitch Power-Ups, it now appears in both the pop-out and OBS overlay with an orange highlight
