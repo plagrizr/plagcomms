@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.34  
+> **Current Version:** 0.9.35  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -142,6 +142,12 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.35 — 2026-05-05 — YouTube Dual Stream & Google Login
+- **YouTube now connects to both vertical and horizontal streams simultaneously** — previously the broadcast lookup stopped at the first result it found, which was random. Now all active broadcasts are collected and polled in parallel so chat from both streams flows through every time
+- **YouTube login simplified** — users no longer need to create a Google Cloud project or enter a Client ID and Client Secret. Click **Login with Google**, sign in with your normal Google account, done. Credentials are now bundled in the app
+- **Fixed YouTube 400 error on broadcast lookup** — `mine=true` and `broadcastStatus` are mutually exclusive API parameters; `mine` has been removed since the OAuth token already scopes results to the authenticated account
+- **Fixed compact mode alignment in pop-out chat** — multi-line messages were vertically centering the username and badges; they now align to the top of the message block
 
 ### 0.9.34 — 2026-05-03 — Room & YouTube Fixes
 - **Fixed room message doubling** — messages no longer appear twice when two streamers share a Twitch Shared Chat. The fix works in both directions: your instance stops forwarding Shared Chat copies to the room (send side), and incoming room echoes of messages you already displayed are suppressed by Twitch message ID (receive side). Works regardless of which version the other streamer is running

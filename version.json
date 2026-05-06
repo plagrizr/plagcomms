@@ -1,8 +1,21 @@
 {
-  "version": "0.9.34",
-  "release_date": "2026-05-03",
+  "version": "0.9.35",
+  "release_date": "2026-05-05",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.35",
+      "date": "2026-05-05",
+      "github_tag": "v0.9.35",
+      "github_title": "plagComms v0.9.35 - YouTube Dual Stream & Google Login",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.35/plagComms-0.9.35.exe",
+      "notes": [
+        "YouTube now receives chat from both vertical and horizontal streams simultaneously — previously only one broadcast was connected at random; now all active broadcasts are polled in parallel",
+        "YouTube login no longer requires a Google Cloud project — users just click 'Login with Google' and sign in with their own account; no Client ID, Client Secret, or API Console setup needed",
+        "Fixed YouTube broadcast lookup 400 error — 'mine' and 'broadcastStatus' are mutually exclusive API parameters; removed 'mine' since the OAuth token already scopes results to the authenticated user",
+        "Fixed compact mode in pop-out chat misaligning multi-line messages — username and badges now align to the top of the message instead of centering vertically"
+      ]
+    },
     {
       "version": "0.9.34",
       "date": "2026-05-03",
