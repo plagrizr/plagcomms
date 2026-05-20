@@ -8,7 +8,7 @@
       "date": "2026-05-19",
       "github_tag": "v0.9.37",
       "github_title": "plagComms v0.9.37 - Event Routing Fix",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.35/plagComms-0.9.35.exe",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.37/plagComms-0.9.37.exe",
       "notes": [
         "Fixed dashboard not counting follows, gifts, and other events when their overlay toggle was off — the dashboard now always counts everything regardless of visibility settings",
         "Fixed pop-out chat not showing follows and other events when the overlay toggle was off — the pop-out and dock now always receive all events; only the OBS overlay respects the visibility toggles",
