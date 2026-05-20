@@ -1,8 +1,39 @@
 {
-  "version": "0.9.35",
-  "release_date": "2026-05-05",
+  "version": "0.9.37",
+  "release_date": "2026-05-19",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.37",
+      "date": "2026-05-19",
+      "github_tag": "v0.9.37",
+      "github_title": "plagComms v0.9.37 - Event Routing Fix",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.35/plagComms-0.9.35.exe",
+      "notes": [
+        "Fixed dashboard not counting follows, gifts, and other events when their overlay toggle was off — the dashboard now always counts everything regardless of visibility settings",
+        "Fixed pop-out chat not showing follows and other events when the overlay toggle was off — the pop-out and dock now always receive all events; only the OBS overlay respects the visibility toggles",
+        "Fixed TikTok follows, shares, likes, gifts, subs, and superfan events being swallowed entirely when their overlay setting was off — they never reached the engine; now they always do",
+        "Fixed YouTube chat, Super Chats, and memberships being blocked from the engine when their overlay setting was off — all three event types now always route through",
+        "Fixed Twitch announcements being blocked when the chat overlay toggle was off — announcements now always appear",
+        "Fixed TikTok badges with text (fan level, brand name, gifter rank) falling back to a CDN image that OBS browser sources silently block — text pill badges now render first, image badges are fallback only",
+        "Fixed BADGE_SCENE_TYPE_RANK_LIST producing a garbled category name — now correctly classified as 'rank_list' with label 'Top Gifter'",
+        "Added try/except protection to TikTok follow and share handlers — unhandled exceptions no longer silently drop events",
+        "Pop-out chat window now remembers its size and position between sessions"
+      ]
+    },
+    {
+      "version": "0.9.36",
+      "date": "2026-05-11",
+      "github_tag": "v0.9.36",
+      "github_title": "plagComms v0.9.36 - UI Polish",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.36/plagComms-0.9.36.exe",
+      "notes": [
+        "Main window position and size are now saved on close and restored on next launch — no more repositioning the window every time",
+        "TikTok status now shows the username being watched — 'Watching for LIVE @username…' instead of the generic message",
+        "TikTok username field placeholder improved to '@username  (we\\'ll strip the @)' — entering with or without the @ both work",
+        "Fixed TikTok button showing 'Save _Watch for LIVE' — Qt mnemonic character was underlining the W; now displays correctly as 'Save & Watch for LIVE'"
+      ]
+    },
     {
       "version": "0.9.35",
       "date": "2026-05-05",

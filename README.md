@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.35  
+> **Current Version:** 0.9.37  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -142,6 +142,23 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.37 — 2026-05-19 — Event Routing Fix
+- **Fixed dashboard not counting events when overlay toggles were off** — the dashboard now always counts follows, gifts, and all other events regardless of what's hidden in the overlay. The overlay toggles only ever affected the OBS chat view; now they do exactly that and nothing more
+- **Fixed pop-out and dock chat not showing events when overlay toggles were off** — the native pop-out window and browser dock now always receive every event. Only the OBS overlay respects the per-platform visibility checkboxes
+- **Fixed TikTok events being swallowed when overlay was off** — follows, shares, likes, gifts, subs, and superfan events were being blocked before they ever reached the engine when their overlay setting was disabled; they now always route through
+- **Fixed YouTube events being blocked by overlay settings** — chat, Super Chats, and memberships were gated at the source; they now always reach the engine
+- **Fixed Twitch announcements being blocked when chat overlay was off** — announcements now always appear in the pop-out and dock regardless of the overlay chat toggle
+- **Fixed TikTok text badges not rendering in OBS** — badges with a text label (fan level, brand name, gifter rank) were falling back to a TikTok CDN image that OBS browser sources silently block due to CORS; text pill badges now always render first, CDN images are fallback only
+- **Fixed RANK_LIST badge showing garbled category name** — "Top Gifter" rank badges were producing an internal `badge_BADGE_SCENE_TYPE_RAN` string instead of a clean label; now correctly shown as a rank badge
+- **Added error protection to TikTok follow and share handlers** — unhandled exceptions in these handlers were silently swallowing events; errors are now logged and the stream continues
+- **Pop-out chat window remembers its size and position** — the pop-out now saves and restores its window geometry between sessions
+
+### 0.9.36 — 2026-05-11 — UI Polish
+- **Main window position and size now saved** — plagComms remembers where you left the window and restores it exactly on next launch; no more repositioning every session
+- **TikTok status shows active username** — the status dot now reads "Watching for LIVE @username…" so you can see at a glance which account it's watching
+- **TikTok username field improved** — placeholder now reads "@username  (we'll strip the @)" and the field accepts the username with or without the @ prefix
+- **Fixed TikTok button label** — "Save & Watch for LIVE" was displaying as "Save _Watch for LIVE" due to a Qt mnemonic character treating `&W` as a keyboard shortcut underline; now renders correctly
 
 ### 0.9.35 — 2026-05-05 — YouTube Dual Stream & Google Login
 - **YouTube now connects to both vertical and horizontal streams simultaneously** — previously the broadcast lookup stopped at the first result it found, which was random. Now all active broadcasts are collected and polled in parallel so chat from both streams flows through every time
