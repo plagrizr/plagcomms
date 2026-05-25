@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.37  
+> **Current Version:** 0.9.38  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -142,6 +142,14 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 0.9.38 — 2026-05-22 — Polish & Fixes
+
+- **Twitch subs now carry a `sub_is_shared` flag** — `false` when the subscription payment is processed silently, `true` when the viewer clicks Share in Chat. External tools like plagcue can use this to show different alerts for each case without double-firing the same notification
+- **Fixed emote autocomplete disappearing while typing** — Windows was auto-dismissing the popup because it used a Tooltip window type; now uses a stable Tool window that survives keyboard input
+- **Fixed emote autocomplete appearing off-screen** — if the pop-out is near the top of the display the popup now flips below the input bar instead of going off-screen above it
+- **Fixed scroll-wheel guard not forwarding to the page** — the guard was consuming wheel events without passing them on, so the page couldn't scroll either; now correctly redirects to the scroll area viewport
+- **Scroll-wheel guard now covers all spinbox types** — decimal spinboxes (QDoubleSpinBox) were not protected; guard now blocks all spin box variants via the shared base class
 
 ### 0.9.37 — 2026-05-19 — Event Routing Fix
 - **Fixed dashboard not counting events when overlay toggles were off** — the dashboard now always counts follows, gifts, and all other events regardless of what's hidden in the overlay. The overlay toggles only ever affected the OBS chat view; now they do exactly that and nothing more

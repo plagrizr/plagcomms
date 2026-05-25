@@ -1,8 +1,22 @@
 {
-  "version": "0.9.37",
-  "release_date": "2026-05-19",
+  "version": "0.9.38",
+  "release_date": "2026-05-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "0.9.38",
+      "date": "2026-05-22",
+      "github_tag": "v0.9.38",
+      "github_title": "plagComms v0.9.38 - Polish & Fixes",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.38/plagComms-0.9.38.exe",
+      "notes": [
+        "Twitch sub events now include a sub_is_shared flag — false for the silent payment confirmation (channel.subscribe), true when the viewer clicks Share in Chat (subscription.message). Allows external tools to distinguish and treat the two events differently",
+        "Fixed emote autocomplete popup disappearing immediately after appearing — the ToolTip window type was being auto-dismissed by Windows when keyboard input was detected; changed to Tool window type which is stable during typing",
+        "Fixed emote autocomplete popup potentially appearing off-screen when the pop-out window is near the top of the display — popup now flips below the input bar if there is not enough room above",
+        "Fixed mouse-wheel scroll accidentally changing spinbox, dropdown, and slider values while scrolling settings pages — the guard now correctly forwards the wheel event to the page scroll area so scrolling continues uninterrupted",
+        "Expanded scroll-wheel guard to cover all spinbox types including decimal spinboxes (QDoubleSpinBox) — previously only integer spinboxes were protected"
+      ]
+    },
     {
       "version": "0.9.37",
       "date": "2026-05-19",
