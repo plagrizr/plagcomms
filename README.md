@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.38  
+> **Current Version:** 1.0.0  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -142,6 +142,16 @@ Port is configurable in Settings (default: `54473`).
 ---
 
 ## Changelog
+
+### 1.0.0 — 2026-05-27 — Official Release
+
+- **Version 1.0** — plagComms is officially out of pre-release. Thank you to everyone who tested and gave feedback during the 0.x run
+- **New app icon** — fresh icon across the system tray, taskbar, and window chrome
+- **Add-on developer docs** — `EVENT_REFERENCE.md` and `ADDON_GUIDE.md` added to the repo covering the WebSocket add-on endpoint, every event type and field across all three platforms, and copy-paste code examples in JavaScript (browser + Node.js) and Python
+- **TikTok superfan event** documented in the event reference with visibility toggle
+- **Twitch chat VIP fields** (`vip`, `vip_seconds`) documented in the event reference
+
+---
 
 ### 0.9.38 — 2026-05-22 — Polish & Fixes
 
