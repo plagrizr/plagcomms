@@ -8,7 +8,7 @@
       "date": "2026-05-28",
       "github_tag": "v1.0.0",
       "github_title": "plagComms v1.0.0 - Official Release",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.0/plagComms-1.0.0.exe",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v0.9.38/plagComms-0.9.38.exe",
       "notes": [
         "Official 1.0 release — plagComms is a multi-platform live chat aggregator for Twitch, TikTok Live, and YouTube Live. Merges all chat and events into a single OBS browser-source overlay. Runs locally with no subscription or cloud backend required",
         "New app icon across all platforms (tray, taskbar, window chrome)",
