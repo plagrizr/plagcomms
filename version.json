@@ -1,20 +1,21 @@
 {
-  "version": "1.0.0",
-  "release_date": "2026-05-27",
+  "version": "0.9.38",
+  "release_date": "2026-05-22",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
     {
       "version": "1.0.0",
-      "date": "2026-05-27",
+      "date": "2026-05-28",
       "github_tag": "v1.0.0",
       "github_title": "plagComms v1.0.0 - Official Release",
       "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.0/plagComms-1.0.0.exe",
       "notes": [
-        "Version 1.0 — official public release",
+        "Official 1.0 release — plagComms is a multi-platform live chat aggregator for Twitch, TikTok Live, and YouTube Live. Merges all chat and events into a single OBS browser-source overlay. Runs locally with no subscription or cloud backend required",
         "New app icon across all platforms (tray, taskbar, window chrome)",
-        "Add-on developer documentation added — EVENT_REFERENCE.md and ADDON_GUIDE.md covering the WebSocket endpoint, all event types, and code examples in JavaScript and Python",
-        "TikTok superfan event documented and visibility toggle added",
-        "Twitch chat VIP fields (vip, vip_seconds) documented in event reference"
+        "Fixed YouTube live viewer count showing --- instead of 0 when no viewers are present — YouTube's API omits the concurrentViewers field entirely at 0 rather than returning 0",
+        "Add-on WebSocket developer documentation added — EVENT_REFERENCE.md and ADDON_GUIDE.md cover every event type and field across all platforms with copy-paste code examples in JavaScript and Python",
+        "TikTok superfan event support and visibility toggle",
+        "Twitch chat VIP fields (vip, vip_seconds) added to event reference"
       ]
     },
     {

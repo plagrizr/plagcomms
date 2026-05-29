@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.0  
+> **Current Version:** 0.9.38  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -143,13 +143,35 @@ Port is configurable in Settings (default: `54473`).
 
 ## Changelog
 
-### 1.0.0 — 2026-05-27 — Official Release
+### 1.0.0 — 2026-05-28 — Official Release
 
-- **Version 1.0** — plagComms is officially out of pre-release. Thank you to everyone who tested and gave feedback during the 0.x run
-- **New app icon** — fresh icon across the system tray, taskbar, and window chrome
-- **Add-on developer docs** — `EVENT_REFERENCE.md` and `ADDON_GUIDE.md` added to the repo covering the WebSocket add-on endpoint, every event type and field across all three platforms, and copy-paste code examples in JavaScript (browser + Node.js) and Python
-- **TikTok superfan event** documented in the event reference with visibility toggle
-- **Twitch chat VIP fields** (`vip`, `vip_seconds`) documented in the event reference
+**plagComms is a multi-platform live chat aggregator for streamers on Windows.**
+
+It runs silently in your system tray and connects to your Twitch, TikTok Live, and YouTube Live streams simultaneously — merging all chat, events, and alerts into a single OBS browser-source overlay. No subscriptions, no cloud accounts, no backend. Everything runs locally on your machine.
+
+---
+
+**What it does:**
+
+- 🟣 **Twitch** — chat (with BTTV/FFZ/7TV emotes), cheers, subs & resubs, gift subs, follows, raids, channel point redemptions, watch streak Power-Ups
+- 🎵 **TikTok Live** — chat, gifts, likes, follows, shares, subscriptions, superfan events
+- 🔴 **YouTube Live** — chat, Superchats, memberships (new, milestone, gifted)
+- 🖥️ **OBS Overlay** — browser-source chat feed with smart auto-scroll, per-message fade, emote rendering, profile pictures, Twitch badges, and full appearance customization
+- 🏠 **Multi-Streamer Rooms** — create or join a shared room with other streamers and see each other's chats merged in real time
+- 💬 **Native Pop-Out Window** — dockable chat window that replays the last 200 messages
+- 📊 **Session Stats** — live counters for messages, bits, subs, gifts, Superchats, and more across all platforms
+- 📝 **Chat Logging** — opt-in SQLite logging with a built-in search and CSV export
+- 🔒 **Secure by default** — OAuth tokens and API keys stored in Windows Credential Manager, never written to disk in plain text
+- 🔌 **Add-on WebSocket** — local WebSocket endpoint lets you build custom tools that react to any stream event in real time (see `Events/ADDON_GUIDE.md`)
+
+---
+
+**In this release:**
+
+- Official 1.0 — out of pre-release after months of testing and feedback from real streams
+- New app icon
+- Add-on developer documentation (`Events/EVENT_REFERENCE.md` + `Events/ADDON_GUIDE.md`) — full event schema reference and code examples for building your own integrations
+- Fixed YouTube live viewer count showing `---` at 0 viewers
 
 ---
 
