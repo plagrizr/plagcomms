@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 0.9.38  
+> **Current Version:** 1.0.0  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -16,9 +16,9 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 ## Features
 
 ### Platform Support
-- **Twitch** — chat, cheers (bits), subscriptions, gift subs, new followers, raids, channel point redemptions
-- **TikTok Live** — chat, gifts, likes, follows, shares, subscriptions
-- **YouTube Live** — chat, Superchats, Super Stickers, memberships (new sponsors, milestones, gifted memberships)
+- **Twitch** — chat, cheers (bits), subscriptions, gift subs, new followers, raids, channel point redemptions, Watch Streak Power-Ups
+- **TikTok Live** — chat, gifts (with real gift images), likes, follows, shares, subscriptions, superfan events
+- **YouTube Live** — chat, Superchats, Super Stickers, memberships (new, milestones, gifted)
 
 ### OBS Overlay
 - Browser-source overlay served locally over WebSocket
@@ -26,8 +26,27 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 - Per-message fade/lifetime control and max message count
 - Configurable font size, message alignment (left/right), and border styling
 - Platform-colored usernames with real Twitch badge images
-- BTTV and FFZ emote support with hover tooltips
+- BTTV, FFZ, and 7TV emote support with hover tooltips
 - Profile picture display with local disk cache
+
+### OBS Browser Dock
+- Full chat dock at `http://localhost:54473/chatbot/dock` — add as a Custom Browser Dock in OBS
+- Send messages to Twitch and YouTube directly from the dock
+- Mod action buttons (Delete, Timeout, Ban) always visible on Twitch messages
+- Clickable links in chat messages
+- Gift images (TikTok) rendered inline
+- BTTV/FFZ/7TV emote images rendered inline
+
+### Channel Stats Overlay
+- Live viewer counts, follower counts, subscriber counts, and YouTube member counts at `http://localhost:54473/stats-overlay`
+- Static counts (followers, subscribers, members) **persist between streams and across app restarts** — populated from cache the moment plagComms opens
+- YouTube subscriber and member counts polled every 10 minutes even when not live
+- Platform cards visible as long as credentials are configured — no need to be streaming
+
+### BTTV Emote Rewards
+- Channel Point rewards named "BTTV", "BetterTTV", or "Better TTV" are automatically detected
+- Redeemer pastes a BTTV emote URL; plagComms shows a notification with the new emote image
+- 10 seconds later BTTV emotes silently re-fetch; bumped emotes shown in a removal notification
 
 ### Multi-Streamer Room System
 - Create or join a password-protected room shared with other streamers
@@ -39,12 +58,27 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 ### Native Pop-Out Chat Window
 - Dockable native chat window separate from the overlay
 - Replays the last 200 messages on open
+- Send messages to Twitch and YouTube from the input bar
+- Emote autocomplete (`:query` syntax for BTTV/FFZ/7TV)
 
 ### Settings & Security
 - Secrets (OAuth tokens, API keys) stored in **Windows Credential Manager** via `keyring` — never written to disk in plain text, never sent to any plagComms server
 - All other settings persisted to `%APPDATA%\plagComms\settings.json`
+- All user data stored in `%APPDATA%\plagComms\` — nothing ever written next to the `.exe`
 - Encrypted backup/restore — export all settings and credentials to a file, import on another PC
-- All Twitch API calls go directly from your machine to `api.twitch.tv` — plagComms has no backend
+- All API calls go directly from your machine to platform APIs — plagComms has no backend
+
+### Data Storage
+All user-generated files live in `%APPDATA%\plagComms\`:
+
+| File / Folder | Contents |
+|---------------|----------|
+| `settings.json` | App configuration |
+| `chat.db` | SQLite chat history (opt-in) |
+| `stats_cache.json` | Persistent follower/subscriber/member counts |
+| `pfp_cache\` | Cached profile pictures |
+| `tiktok_emotes\` | Custom TikTok emote images (drop PNG/GIF files here) |
+| `debug\` | Debug log files (opt-in, off by default) |
 
 ### Chat Filtering
 - Per-platform event toggles (hide subs, gifts, follows, etc. independently)
@@ -65,7 +99,6 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 - Checks for new versions on startup (non-blocking, background thread)
 - Update banner shown in-app when a new version is available
 - Full changelog viewer built into the app
-- Download link opens the GitHub releases page
 
 ### Overlay Appearance Customization
 - Max messages displayed
@@ -74,6 +107,7 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 - Right-align mode
 - Optional border (color, width, radius)
 - Per-platform accent colors (Twitch purple, TikTok red, YouTube red — all configurable)
+- VIP Highlight — rainbow-cycling border for designated usernames
 
 ---
 
@@ -84,6 +118,7 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 3. plagComms starts in the system tray
 4. Open the settings window from the tray icon and connect your platforms
 5. Add `http://localhost:54473/chatbot` as a Browser Source in OBS
+6. Optionally add `http://localhost:54473/chatbot/dock` as a Custom Browser Dock in OBS
 
 ---
 
@@ -92,8 +127,22 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 | Platform | What you need |
 |----------|--------------|
 | Twitch | Click **Connect** in the app — opens Twitch's own login page in your browser |
-| TikTok | TikTok API key + username |
-| YouTube | OAuth Client ID + Client Secret (Google API Console) |
+| TikTok | TikTok username + optional API key |
+| YouTube | Click **Login with Google** — one-click OAuth, no API console setup required |
+
+---
+
+## Overlay URLs
+
+| URL | Description |
+|-----|-------------|
+| `http://localhost:54473/chatbot` | Unified feed — all platforms |
+| `http://localhost:54473/chatbot/{id}` | Filtered feed for a specific streamer (room use) |
+| `http://localhost:54473/chatbot/dock` | Browser dock panel with send bar and mod buttons |
+| `http://localhost:54473/stats-overlay` | Live viewer/follower/subscriber/member counts |
+| `http://localhost:54473/logs` | Chat history log viewer |
+
+Port is configurable in Settings (default: `54473`).
 
 ---
 
@@ -109,41 +158,29 @@ Every permission is scoped to **your channel only**. plagComms cannot access or 
 | `bits:read` | See who cheered and for how much | Showing cheer/bits events in the overlay |
 | `channel:read:subscriptions` | See new subs and gift subs on your channel | Showing sub and gift-sub events in the overlay |
 | `channel:read:redemptions` | See channel point redemptions | Showing redemption events in the overlay |
-| `moderator:read:followers` | See new follower events | Showing follow alerts in the overlay (Twitch requires this specific scope for the v2 followers API even on your own channel) |
-| `channel:manage:raids` | Start a raid from your channel to another | Powers the **⚔ Raid** button in the pop-out chat window — you pick the target and confirm before anything is sent |
-| `moderator:manage:shoutouts` | Send a `/shoutout` from your channel | Powers the **📣 Send Shoutout** button that appears when someone raids you — never fires automatically |
-| `moderator:manage:banned_users` | Time out or ban a user from your channel | Powers the **⏱ Timeout** and **🔨 Ban** mod action buttons in the pop-out chat window (optional, off by default) |
-| `moderator:manage:chat_messages` | Delete a specific chat message | Powers the **🗑 Delete** mod action button in the pop-out chat window (optional, off by default) |
-| `channel:manage:polls` | Create polls in your channel | Powers the **📊 Poll** button in the pop-out chat toolbar |
-| `moderator:manage:chat_settings` | Read and change chat mode settings (sub-only, slow mode, etc.) | Powers the **🎛 Chat** dropdown in the pop-out toolbar — shows live status and lets you toggle each mode |
+| `moderator:read:followers` | See new follower events | Showing follow alerts in the overlay |
+| `user:write:chat` | Send chat messages as you | Powers the send bar in the pop-out window and browser dock |
+| `channel:manage:raids` | Start a raid from your channel to another | Powers the **⚔ Raid** button — you pick the target and confirm |
+| `moderator:manage:shoutouts` | Send a `/shoutout` from your channel | Powers the **📣 Send Shoutout** button on raid alerts |
+| `moderator:manage:banned_users` | Time out or ban a user from your channel | Powers the **⏱ Timeout** and **🔨 Ban** mod action buttons (off by default) |
+| `moderator:manage:chat_messages` | Delete a specific chat message | Powers the **🗑 Delete** mod action button (off by default) |
+| `channel:manage:polls` | Create polls in your channel | Powers the **📊 Poll** button in the pop-out toolbar |
+| `moderator:manage:chat_settings` | Read and change chat mode settings | Powers the **🎛 Chat** dropdown — shows live status of sub-only, slow mode, etc. |
 
 ### What plagComms does NOT do
 
-- ❌ Does not read or write your chat messages (no `chat:edit` or `chat:write`)
-- ❌ Does not ban, time out, or moderate your chat
+- ❌ Does not auto-moderate, auto-ban, or take any action without you clicking a button
 - ❌ Does not read your subscriber list, earnings, or account settings
 - ❌ Does not store your token anywhere except your own PC's Credential Manager
-- ❌ Does not send your token to any plagComms server — all API calls go directly from your machine to `api.twitch.tv`
+- ❌ Does not send your token to any plagComms server
 
-If you're uncomfortable with any permission, you can revoke plagComms' access at any time under [Twitch → Settings → Connections](https://www.twitch.tv/settings/connections).
-
----
-
-## Overlay URL
-
-| URL | Description |
-|-----|-------------|
-| `http://localhost:54473/chatbot` | Unified feed — all platforms |
-| `http://localhost:54473/chatbot/{id}` | Filtered feed for a specific streamer (room use) |
-| `http://localhost:54473/logs` | Chat history log viewer |
-
-Port is configurable in Settings (default: `54473`).
+Revoke access at any time at [Twitch → Settings → Connections](https://www.twitch.tv/settings/connections).
 
 ---
 
 ## Changelog
 
-### 1.0.0 — 2026-05-28 — Official Release
+### 1.0.0 — 2026-06-05 — Official Release
 
 **plagComms is a multi-platform live chat aggregator for streamers on Windows.**
 
@@ -169,153 +206,83 @@ It runs silently in your system tray and connects to your Twitch, TikTok Live, a
 **In this release:**
 
 - Official 1.0 — out of pre-release after months of testing and feedback from real streams
-- New app icon
-- Add-on developer documentation (`Events/EVENT_REFERENCE.md` + `Events/ADDON_GUIDE.md`) — full event schema reference and code examples for building your own integrations
-- Fixed YouTube live viewer count showing `---` at 0 viewers
+- **Consistent styling across the overlay, streamer chat (dock), and pop-out** — profile pictures, badges, gifts, subs, and events now look the same everywhere
+- **TikTok badges redesigned** — diamond gifter level, FANS heart (orange for active fans, gold glow for superfans), moderator sword, and top-gifter — right-aligned and consistently ordered
+- **Detailed gift display** — gift image, sender, gift name × quantity, and diamond value
+- **Gigantified emotes now render at full resolution** (Twitch Power-Ups + TikTok sub emotes) instead of a blurry upscale
+- **Independent per-event visibility toggles** for the overlay and the streamer chat, now applied reliably to both
+- **Compact overlay mode** for a denser on-stream chat feed
+- New app icon and automatic update checks
+- Add-on developer documentation (`Events/EVENT_REFERENCE.md` + `Events/ADDON_GUIDE.md`)
 
 ---
 
 ### 0.9.38 — 2026-05-22 — Polish & Fixes
 
-- **Twitch subs now carry a `sub_is_shared` flag** — `false` when the subscription payment is processed silently, `true` when the viewer clicks Share in Chat. External tools like plagcue can use this to show different alerts for each case without double-firing the same notification
-- **Fixed emote autocomplete disappearing while typing** — Windows was auto-dismissing the popup because it used a Tooltip window type; now uses a stable Tool window that survives keyboard input
-- **Fixed emote autocomplete appearing off-screen** — if the pop-out is near the top of the display the popup now flips below the input bar instead of going off-screen above it
-- **Fixed scroll-wheel guard not forwarding to the page** — the guard was consuming wheel events without passing them on, so the page couldn't scroll either; now correctly redirects to the scroll area viewport
-- **Scroll-wheel guard now covers all spinbox types** — decimal spinboxes (QDoubleSpinBox) were not protected; guard now blocks all spin box variants via the shared base class
+- **Twitch subs now carry a `sub_is_shared` flag** — `false` when the subscription payment is processed silently, `true` when the viewer clicks Share in Chat
+- **Fixed emote autocomplete disappearing while typing** — Windows was auto-dismissing the popup; now uses a stable Tool window
+- **Fixed emote autocomplete appearing off-screen** — popup now flips below the input bar when near the top of the display
+- **Fixed scroll-wheel guard not forwarding to the page** — wheel events now correctly redirect to the scroll area viewport
+- **Scroll-wheel guard now covers all spinbox types** — decimal spinboxes now protected via shared base class
 
 ### 0.9.37 — 2026-05-19 — Event Routing Fix
-- **Fixed dashboard not counting events when overlay toggles were off** — the dashboard now always counts follows, gifts, and all other events regardless of what's hidden in the overlay. The overlay toggles only ever affected the OBS chat view; now they do exactly that and nothing more
-- **Fixed pop-out and dock chat not showing events when overlay toggles were off** — the native pop-out window and browser dock now always receive every event. Only the OBS overlay respects the per-platform visibility checkboxes
-- **Fixed TikTok events being swallowed when overlay was off** — follows, shares, likes, gifts, subs, and superfan events were being blocked before they ever reached the engine when their overlay setting was disabled; they now always route through
-- **Fixed YouTube events being blocked by overlay settings** — chat, Super Chats, and memberships were gated at the source; they now always reach the engine
-- **Fixed Twitch announcements being blocked when chat overlay was off** — announcements now always appear in the pop-out and dock regardless of the overlay chat toggle
-- **Fixed TikTok text badges not rendering in OBS** — badges with a text label (fan level, brand name, gifter rank) were falling back to a TikTok CDN image that OBS browser sources silently block due to CORS; text pill badges now always render first, CDN images are fallback only
-- **Fixed RANK_LIST badge showing garbled category name** — "Top Gifter" rank badges were producing an internal `badge_BADGE_SCENE_TYPE_RAN` string instead of a clean label; now correctly shown as a rank badge
-- **Added error protection to TikTok follow and share handlers** — unhandled exceptions in these handlers were silently swallowing events; errors are now logged and the stream continues
-- **Pop-out chat window remembers its size and position** — the pop-out now saves and restores its window geometry between sessions
+- Fixed dashboard not counting events when overlay toggles were off
+- Fixed pop-out and dock not showing events when overlay toggles were off
+- Fixed TikTok text badges not rendering in OBS (CORS issue)
+- Pop-out chat window remembers its size and position
 
 ### 0.9.36 — 2026-05-11 — UI Polish
-- **Main window position and size now saved** — plagComms remembers where you left the window and restores it exactly on next launch; no more repositioning every session
-- **TikTok status shows active username** — the status dot now reads "Watching for LIVE @username…" so you can see at a glance which account it's watching
-- **TikTok username field improved** — placeholder now reads "@username  (we'll strip the @)" and the field accepts the username with or without the @ prefix
-- **Fixed TikTok button label** — "Save & Watch for LIVE" was displaying as "Save _Watch for LIVE" due to a Qt mnemonic character treating `&W` as a keyboard shortcut underline; now renders correctly
+- Main window position and size now saved and restored between sessions
+- TikTok status shows active username
 
 ### 0.9.35 — 2026-05-05 — YouTube Dual Stream & Google Login
-- **YouTube now connects to both vertical and horizontal streams simultaneously** — previously the broadcast lookup stopped at the first result it found, which was random. Now all active broadcasts are collected and polled in parallel so chat from both streams flows through every time
-- **YouTube login simplified** — users no longer need to create a Google Cloud project or enter a Client ID and Client Secret. Click **Login with Google**, sign in with your normal Google account, done. Credentials are now bundled in the app
-- **Fixed YouTube 400 error on broadcast lookup** — `mine=true` and `broadcastStatus` are mutually exclusive API parameters; `mine` has been removed since the OAuth token already scopes results to the authenticated account
-- **Fixed compact mode alignment in pop-out chat** — multi-line messages were vertically centering the username and badges; they now align to the top of the message block
+- YouTube now connects to both vertical and horizontal streams simultaneously
+- YouTube login simplified — one-click Google login, no API console required
+- Fixed YouTube 400 error on broadcast lookup
 
 ### 0.9.34 — 2026-05-03 — Room & YouTube Fixes
-- **Fixed room message doubling** — messages no longer appear twice when two streamers share a Twitch Shared Chat. The fix works in both directions: your instance stops forwarding Shared Chat copies to the room (send side), and incoming room echoes of messages you already displayed are suppressed by Twitch message ID (receive side). Works regardless of which version the other streamer is running
-- **Fixed own-message echo from room** — when your chat messages were relayed back to you by a partner's instance they no longer show as duplicates
-- **Fixed global emote doubling** — BTTV/FFZ emotes that share a name with a native Twitch emote (e.g. PogChamp) were rendering twice; third-party emotes now skip any character range already claimed by a native emote
-- **Fixed missing badges on room-relayed messages** — badge URLs are now filled from the local Twitch badge cache when the sending instance didn't resolve them
-- **Fixed room disconnecting permanently on any server error** — only auth-related server errors (wrong password, room not found) are treated as fatal; all other errors now reconnect with backoff
-- **Fixed YouTube never connecting when you have many past broadcasts** — the broadcast lookup was using `broadcastType=all` with `maxResults=10`, which filled up with old completed streams before reaching the live one. Now queries `broadcastStatus=active` (only live broadcasts) first, then `broadcastStatus=upcoming` for pre-live states
-- **Fixed YouTube continuation token extraction** — replaced a fragile non-greedy regex against `ytInitialData` with a proper brace-matching JSON extractor and recursive token searcher that doesn't break when YouTube changes their page structure
-- **YouTube session expired — popup notification** — when Google invalidates the login token (invalid_grant), plagComms now shows a dialog immediately with a "Fix Now" button that opens YouTube settings and kicks off re-authentication in one click. Previously this was a single line in the activity log that was easy to miss
-- **YouTube pre-stream ready** — plagComms no longer needs to be opened after going live. Open it any time; it polls every 90 seconds and connects automatically when your stream starts. The session-expired dialog ensures token issues are caught and fixed before stream time
+- Fixed room message doubling for Twitch Shared Chat
+- Fixed BTTV/FFZ emote doubling when name overlaps native Twitch emote
+- Fixed YouTube never connecting with many past broadcasts
+- YouTube session expired now shows a dialog with Fix Now button
 
-### 0.9.33 — 2026-05-01 - Watch Streaks
-- **Twitch Watch Streaks** — when a viewer shares their stream watch streak via Twitch Power-Ups, it now appears in both the pop-out and OBS overlay with an orange highlight
-- Displays streak count and channel points earned (e.g. `🔥 username is on a 5-stream watch streak!  ·  +350 pts`)
-- Fixed emote autocomplete popup appearing behind the pop-out window when Always on Top is active — popup now uses `WindowStaysOnTopHint` to guarantee it renders above all other windows
-- Fixed `release.bat` producing garbled em dash in GitHub release title on Windows — added `chcp 65001` and `PYTHONUTF8=1`
+### 0.9.33 — 2026-05-01 — Watch Streaks
+- Twitch Watch Streak Power-Up events shown in overlay and pop-out
 
 ### 0.9.32 — 2026-04-30 — Bidirectional Chat
-- **Pop-out chat input bar** — plagComms is now bidirectional; type and send messages to your live chat without leaving the app
-- **Platform selector**: choose All connected, Twitch only, or YouTube only; unconfigured platforms are omitted from the list; configured-but-offline platforms are greyed; TikTok listed as coming soon
-- Chat input auto-grows from one line up to four lines as text wraps; **Enter** sends, **Shift+Enter** inserts a newline; send button greys out when the box is empty
-- **Emote autocomplete**: type `:` followed by 2+ characters to see a popup of matching BTTV/FFZ/7TV emotes; Up/Down navigates, Enter or Tab inserts, Escape dismisses; clicking a row also inserts
-- **Twitch send**: `POST /helix/chat/messages` — requires re-authentication to pick up the new `user:write:chat` scope
-- **YouTube send**: `liveChatMessages.insert` — requires re-authentication to pick up the new `youtube.force-ssl` scope; only available while live
-- Fixed "Failed to load Python DLL" error dialog during in-app updates — updater now uses `os._exit(0)` to bypass PyInstaller DLL cleanup
-- Pop-out chat: incoming raids now show a prominent shoutout card with raider name, viewer count, and a one-click **Send Shoutout** button
-- Fixed duplicate raid cards — IRC and EventSub no longer both fire; the richer EventSub card (with viewer count) is shown
-- Pop-out chat: new **⚔ Raid** button in the toolbar — search a channel, preview their avatar, then a 30-second countdown fires the raid (RAID NOW to go immediately)
-- Pop-out chat: new **📊 Poll** button in the toolbar — question, up to 5 choices, duration picker, creates a Twitch poll in one click
-- Pop-out chat: new **Mod Actions** — enable "Show mod action buttons" in Twitch settings to add 🗑 Delete, ⏱ Timeout (with duration picker), and 🔨 Ban to every message; off by default; Delete propagates to native Twitch chat, the pop-out, and the HTML/OBS overlay
-- Fixed raider tags not appearing — raiding streamer detected by username match; raid viewers detected via `badges` tag (`raid/1`); both tagged **⚔ Raider · channelname** for 10 minutes
-- Pop-out chat: new **🎛 Chat** button in toolbar — live sub-only, emote-only, unique-chat, follower-only, and slow-mode toggles; auto-polls every 10 seconds so moderator changes from Twitch are reflected in real time
-- Twitch OAuth: added `moderator:manage:banned_users`, `moderator:manage:chat_messages`, `channel:manage:polls`, `moderator:manage:chat_settings`, and `user:write:chat` scopes (re-auth required)
-- YouTube OAuth: scope upgraded from `youtube.readonly` to `youtube.force-ssl` (re-auth required to enable chat sending)
-- Fixed YouTube reconnecting every 10–80 seconds during quiet streams — staleness detection now time-based (4 minutes)
-- Fixed YouTube polling too aggressively pre-stream — interval raised to 90 s
-- Fixed YouTube duplicate messages on reconnect — deduplication by message ID across reconnects
+- Pop-out chat input bar — send messages to Twitch and YouTube
+- Emote autocomplete for BTTV/FFZ/7TV
+- Twitch mod actions: Delete, Timeout, Ban
+- Twitch toolbar: Raid, Poll, Shoutout, Chat Mode controls
+- Raid alert cards with one-click Send Shoutout
 
 ### 0.9.31 — 2026-04-28
-- **Fixed YouTube quota exhaustion** — YouTube chat now uses the internal continuation-token API (same as the YouTube web player), which has zero quota cost. OAuth is now used only to find the broadcast video ID on connect (1 unit) and fetch channel stats every 3 minutes (~576 units/day total vs ~86,400 previously). Chat messages, superchats, and memberships all flow through the continuation path
-- **Per-platform debug log toggles** — Twitch Settings now has separate toggles for Twitch IRC/EventSub, TikTok badge/gift verbose logs, and YouTube chat debug. All off by default; TikTok toggle gates the tiktok_debug.log file level directly
+- Fixed YouTube quota exhaustion — switched to zero-quota continuation token API
+- Per-platform debug log toggles
 
 ### 0.9.30 — 2026-04-26
-- TikTok badge enrichment — mod, fan club level, top gifter rank, title gifter, diamond level, super fan status extracted from badge_list and shown as badges on all TikTok events in both overlay and pop-out; icon images pulled from combine_badge_struct; text pills for badges without icons
-- Fixed TikTok gift combos: repeat_count is cumulative so streakable gifts now fire once when the streak ends with the correct total (8 roses → ×8, not ×44); non-streakable gifts debounce over 1.5s
-- Pop-out chat: TikTok text badges (no icon URL) render as small labeled pills instead of invisible empty boxes
-
-### 0.9.29 — 2026-04-25
-- BTTV/FFZ/7TV emotes now refresh every 15 minutes while connected — emotes added mid-stream are picked up automatically without reconnecting
-- Fixed YouTube going stale mid-stream — polling interval capped at 30s, staleness watchdog forces reconnect after 4 minutes of no response, fail threshold halved for faster detection
-- Fixed YouTube quota wait message spamming the activity log — now logged once when quota gate is entered instead of every 5 minutes
-
-### 0.9.28 — 2026-04-25
-- Fixed Twitch emote quality — all native Twitch emotes now use the 3.0 CDN resolution (112px) instead of 1.0 (28px); giant Gigantify emotes are now crisp instead of blurry
-- Fixed blank space below Gigantify giant emote in pop-out chat
-- Fixed Gigantify emote in OBS overlay stretching to full row width — now renders as a square sized to match message height
-- Fixed horizontal chat overlay: Gigantify now shows as a 2x-size inline emote in the chip (was silently dropped)
-- Fixed horizontal chat overlay: emote tooltip text (name + "Twitch") was rendering inline — emotes now show as image-only
-- Fixed horizontal chat overlay: VIP Highlight now pulses the chip border with the rainbow glow and fades after the configured duration
-- VIP Highlight now also applies to Gigantify emote messages, not just regular chat
+- TikTok badge enrichment (mod, fan club, top gifter rank, superfan)
+- Fixed TikTok streakable gift combo counting
 
 ### 0.9.27 — 2026-04-25
-- **New OBS overlay: Channel Stats** — add `http://localhost:54473/stats-overlay` as a Browser Source to display live follower, subscriber, and viewer counts across Twitch, TikTok, and YouTube; platform cards auto-hide when not connected
-- **Dashboard** — each platform card now shows live channel stats above session counters
-- Fixed TikTok viewer count showing cumulative unique viewers (~19.8K) instead of concurrent — now uses `m_total` from `RoomUserSeqEvent`
-- Added TikTok **Follower count** and **SuperFan count** to dashboard and stats overlay
-- Fixed TikTok viewer count and channel card not appearing in the stats overlay on connect
-- **Twitch: Gigantify an Emote** — correctly detected via `msg-id=gigantified-emote-message`; emote renders at ~10x size in both pop-out chat and OBS overlay; messages with text before the emote show the text above it
-- TikTok emote-pack claims (EmoteChatEvent) also render giant using the same pipeline
-- Fixed emote messages in pop-out chat causing horizontal overflow — emote rows no longer push the window wider than its bounds
-- **YouTube: Reconnect button** — appears when YouTube drops connection so you can restart the listener without re-authenticating; also shows on token-invalid errors
-- **VIP Highlight** — enter comma-separated usernames in Appearance → VIP Highlight; those users' messages rainbow-cycle (gold → pink → cyan → green) in pop-out and OBS overlay, auto-fading after a configurable number of seconds
-- **Twitch debug mode** — enable "Log all Twitch events" on the Twitch page to print every raw IRC line and EventSub notification to the activity log
-
-### 0.9.5 — 2026-04-19
-- Fixed TikTok custom emotes not rendering in native chat window
-- Added raw comment debug logging to `tiktok_debug.log` to diagnose emote format
-
-### 0.9.4 — 2026-04-19
-- YouTube quota exceeded now sleeps until midnight PT (exact reset time) instead of a flat 1 hour
-- Quota reset timestamp is persisted to settings — app restarts no longer immediately retry when quota is still exhausted
-- BTTV emotes for YouTube are now loaded once per session instead of on every reconnect attempt
+- Channel Stats overlay (`/stats-overlay`)
+- Twitch Gigantify and TikTok emote pack giant emote rendering
+- VIP Highlight feature
 
 ### 0.9.3 — 2026-04-19
-- TikTok custom emotes — drop PNG/GIF files into the `tiktok_emotes/` folder and they render as images in chat
-- TikTok native bracket emotes (e.g. `[laugh]`, `[heart]`) now convert to emoji automatically
-- Custom emotes reload on every TikTok reconnect — no app restart needed after adding new emotes
+- TikTok custom emotes — drop PNG/GIF files into `%APPDATA%\plagComms\tiktok_emotes\`
+- TikTok native bracket emotes convert to emoji automatically
 
 ### 0.9.2 — 2026-04-19
-- One-click in-app auto-update — install new versions without leaving plagComms
+- One-click in-app auto-update
 
 ### 0.9.1 — 2026-04-19
 - BTTV emote support for YouTube Live Chat
-- Animated emote support (GIF emotes now animate in native chat window)
-- 7TV emote support for Twitch chat
-- Announcement messages now show a rainbow border highlight
-- Channel point redemptions now display the reward name correctly
-- YouTube API quota exceeded no longer spams the activity log
-- Build script now auto-names the exe with the version number
+- Animated GIF emote support
+- 7TV emote support for Twitch
 
 ### 0.9.0-beta — 2026-04-16
 - Initial beta release
-- Twitch, TikTok, YouTube Live chat support
-- Multi-streamer room system with public room listing
-- BTTV/FFZ emote support with hover tooltips
-- Real Twitch badge images
-- Scrollable overlay with smart auto-scroll
-- Native pop-out chat window
-- Encrypted settings backup/restore
-- SQLite chat history logging
 
 ---
 

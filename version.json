@@ -1,8 +1,28 @@
 {
-  "version": "0.9.38",
-  "release_date": "2026-05-22",
+  "version": "1.0.0",
+  "release_date": "2026-06-05",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-06-05",
+      "github_tag": "v1.0.0",
+      "github_title": "plagComms v1.0.0 - Official Release",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.0/plagComms-1.0.0.exe",
+      "notes": [
+        "plagComms 1.0 — the first official release. A multi-platform live chat aggregator and OBS overlay for streamers: unify Twitch, TikTok LIVE, and YouTube LIVE chat and events into one overlay, plus a dockable streamer chat and a native pop-out window. Runs on your own machine — no subscription, no cloud account required",
+        "Unified OBS overlay, dockable streamer chat, and native pop-out window — with consistent profile-picture, badge, gift, sub, and event styling across all three",
+        "Full emote support: Twitch plus BetterTTV / FrankerFaceZ / 7TV, and TikTok custom emotes — gigantified-emote Power-Ups now render at full resolution",
+        "TikTok badges redesigned — diamond gifter level, FANS heart (orange for active fans, gold glow for superfans), moderator, and top-gifter — right-aligned and consistently ordered",
+        "Detailed gift display: gift image, sender, gift name times quantity, and diamond value",
+        "Independent per-event visibility toggles for the overlay and the streamer chat",
+        "Compact overlay mode for a denser on-stream chat feed",
+        "Multi-streamer rooms — merge another streamer's chat into yours in real time",
+        "Twitch moderation from the dock (delete / timeout / ban), plus raids, polls, and chat modes",
+        "Live session stats, channel-stats overlays, opt-in chat logging with search and CSV export, and a WebSocket add-on API for developers",
+        "Automatic update checks and a refreshed app icon"
+      ]
+    },
     {
       "version": "0.9.38",
       "date": "2026-05-22",
