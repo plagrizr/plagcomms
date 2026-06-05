@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.0  
+> **Current Version:** 1.0.1  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -179,6 +179,12 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.0.1 — 2026-06-05 — Horizontal Feed Fix
+
+- **Fixed the horizontal chat-bar overlay freezing** once it filled with messages — after about six messages it stopped accepting new chat. It now scrolls continuously, with the oldest message sliding off the left as each new one arrives.
+
+---
 
 ### 1.0.0 — 2026-06-05 — Official Release
 

@@ -1,8 +1,18 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "release_date": "2026-06-05",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.0.1",
+      "date": "2026-06-05",
+      "github_tag": "v1.0.1",
+      "github_title": "plagComms v1.0.1 - Horizontal Feed Fix",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.1/plagComms-1.0.1.exe",
+      "notes": [
+        "Fixed the horizontal chat-bar overlay freezing once it filled with messages — after about six messages it would stop accepting new chat. It now scrolls continuously, with the oldest message sliding off the left as each new one comes in."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-06-05",
