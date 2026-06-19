@@ -1,8 +1,27 @@
 {
-  "version": "1.0.1",
-  "release_date": "2026-06-05",
+  "version": "1.0.2",
+  "release_date": "2026-06-19",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.0.2",
+      "date": "2026-06-19",
+      "github_tag": "v1.0.2",
+      "github_title": "plagComms v1.0.2 - Raid Tags, YouTube Subs, Ad Notices & Fixes",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.2/plagComms.exe",
+      "notes": [
+        "Raid viewer tags — chatters who arrive with a raid now get a ⚔ tag showing whose raid they came in with, in the docked chat, pop-out, and OBS overlay.",
+        "New-subscriber alerts for YouTube — plagComms watches your subscriber count while live and announces new subs (named when public, anonymous otherwise) across the overlay and streamer chats.",
+        "Ad-break notifications on your streamer chat (docked + pop-out) — an amber countdown appears about a minute before a Twitch ad, turns red while it's running, and has Skip and dismiss buttons. The notice now floats over the top of the chat instead of pushing your messages down. (Requires a one-time Twitch re-auth to grant ad permissions.)",
+        "Automatic re-auth reminder — if your Twitch login is missing permissions that this version needs, plagComms now tells you at startup with a one-click Re-authenticate button, so new features don't silently do nothing.",
+        "BetterTTV emote add/remove notices — when a BTTV emote is added or removed (including via channel-point redemptions) it's announced in your streamer chats.",
+        "YouTube emoji and stickers now render as their actual image inline instead of showing up as a blank message.",
+        "Pop-out chat fixes — messages with links and emotes no longer scramble or spill past the window edge, and the chat now reliably stays pinned to the newest message instead of lagging a line or two behind.",
+        "Shared-chat partner channels now show their name instead of a raw numeric ID.",
+        "Dashboard follower/subscriber stats now persist across restarts instead of showing blanks until the next live update.",
+        "Hid the thin scrollbar on the OBS overlay for a cleaner on-stream look."
+      ]
+    },
     {
       "version": "1.0.1",
       "date": "2026-06-05",

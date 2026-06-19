@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.1  
+> **Current Version:** 1.0.2  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -16,9 +16,9 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 ## Features
 
 ### Platform Support
-- **Twitch** — chat, cheers (bits), subscriptions, gift subs, new followers, raids, channel point redemptions, Watch Streak Power-Ups
+- **Twitch** — chat, cheers (bits), subscriptions, gift subs, new followers, raids, channel point redemptions, Watch Streak Power-Ups, moderation actions, and ad-break notifications
 - **TikTok Live** — chat, gifts (with real gift images), likes, follows, shares, subscriptions, superfan events
-- **YouTube Live** — chat, Superchats, Super Stickers, memberships (new, milestones, gifted)
+- **YouTube Live** — chat (with emoji & stickers rendered inline), Superchats, Super Stickers, memberships (new, milestones, gifted), and synthesized new-subscriber alerts
 
 ### OBS Overlay
 - Browser-source overlay served locally over WebSocket
@@ -43,10 +43,16 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 - YouTube subscriber and member counts polled every 10 minutes even when not live
 - Platform cards visible as long as credentials are configured — no need to be streaming
 
-### BTTV Emote Rewards
+### BTTV Emote Tracking
 - Channel Point rewards named "BTTV", "BetterTTV", or "Better TTV" are automatically detected
-- Redeemer pastes a BTTV emote URL; plagComms shows a notification with the new emote image
-- 10 seconds later BTTV emotes silently re-fetch; bumped emotes shown in a removal notification
+- On redemption — and on a 30-minute background timer — plagComms re-checks your BetterTTV channel emote set and posts mod-style messages for **both** added and removed emotes (with the emote image)
+- Shows in the streamer chat, pop-out, and (optionally) the overlay; also pushed to the add-on WebSocket
+
+### Ad Break Notifications (Twitch)
+- A drop-down notice on your streamer chat and pop-out (never the on-stream overlay)
+- Amber **"⏰ Ad in 0:60"** countdown ~1 minute before a scheduled ad, turning red **"🔴 AD BREAK · 0:30 left"** while one is running
+- A **Skip** button snoozes (delays) the upcoming ad, plus a dismiss button
+- Requires the `channel:read:ads` / `channel:manage:ads` permissions (re-connect Twitch to enable)
 
 ### Multi-Streamer Room System
 - Create or join a password-protected room shared with other streamers
@@ -166,6 +172,12 @@ Every permission is scoped to **your channel only**. plagComms cannot access or 
 | `moderator:manage:chat_messages` | Delete a specific chat message | Powers the **🗑 Delete** mod action button (off by default) |
 | `channel:manage:polls` | Create polls in your channel | Powers the **📊 Poll** button in the pop-out toolbar |
 | `moderator:manage:chat_settings` | Read and change chat mode settings | Powers the **🎛 Chat** dropdown — shows live status of sub-only, slow mode, etc. |
+| `channel:moderate` + `moderation:read` | Read and perform moderation in your channel | Moderator-attributed mod-action events plus the Delete / Timeout / Ban buttons |
+| `channel:read:vips` | See your channel's VIPs | Showing VIP grants/removals in mod-action events |
+| `channel:read:ads` | See your ad-break schedule | The "ad incoming / ad active" drop-down notice |
+| `channel:manage:ads` | Snooze (delay) your next scheduled ad | The **Skip** button on the ad-break notice |
+
+> A few additional read-only moderation scopes (`moderator:read:*` for blocked terms, unban requests, warnings, moderators, and VIPs) are also requested so moderation events display with full detail. If you connected before these were added, re-connect Twitch to enable the newer features.
 
 ### What plagComms does NOT do
 
@@ -179,6 +191,21 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.0.2 — 2026-06-19 — Raid Tags, YouTube Subs, Ad Notices & Fixes
+
+- **Raid viewer tags** — chatters who arrive with a raid now get a **⚔ tag showing whose raid they came in with**, in the docked chat, pop-out, and OBS overlay. (Twitch never identifies raid viewers directly, so this works by tagging a chatter whose first message of the stream lands within ~2 minutes of a raid; the tag stays for 10 minutes from the raid.)
+- **New-subscriber alerts for YouTube** — YouTube has no native subscribe event, so plagComms watches your subscriber count while live and announces new subs (named when the subscriber is public, anonymous otherwise) across the overlay and streamer chats.
+- **Ad-break notifications** on your streamer chat (docked + pop-out) — an amber **"⏰ Ad in M:SS"** countdown appears about a minute before a Twitch ad, turns red **"🔴 AD BREAK · M:SS left"** while it runs, and has **Skip** and dismiss buttons. The notice floats over the top of the chat instead of pushing your messages down. *Requires a one-time Twitch re-auth to grant ad permissions.*
+- **Automatic re-auth reminder** — if your saved Twitch login is missing permissions a new version needs, plagComms detects it at startup and prompts you with a one-click **Re-authenticate** button, so newly added features never silently do nothing.
+- **BetterTTV emote add/remove notices** — when a BTTV emote is added or removed (including via channel-point redemptions) it's announced in your streamer chats.
+- **YouTube emoji & stickers** now render as their actual image inline instead of showing up as a blank message.
+- **Pop-out chat fixes** — messages with links and emotes no longer scramble or spill past the window edge, and the chat now reliably stays pinned to the newest message instead of lagging a line or two behind.
+- **Shared-chat partner channels** now show their name instead of a raw numeric ID.
+- **Dashboard stats persist across restarts** — follower/subscriber numbers show immediately instead of blanks until the next live update.
+- **Cleaner overlay** — hid the thin scrollbar on the OBS overlay.
+
+---
 
 ### 1.0.1 — 2026-06-05 — Horizontal Feed Fix
 
