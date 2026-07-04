@@ -1,8 +1,25 @@
 {
-  "version": "1.0.2",
-  "release_date": "2026-06-19",
+  "version": "1.0.3",
+  "release_date": "2026-07-03",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.0.3",
+      "date": "2026-07-03",
+      "github_tag": "v1.0.3",
+      "github_title": "plagComms v1.0.3 - Hype Train, Dock Parity & Reliability",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.3/plagComms.exe",
+      "notes": [
+        "Hype Train tracking — a live banner on your streamer chats (docked + pop-out) shows the train's level, progress %, time remaining, and exact bits + gift-sub totals counted by plagComms, with a level-up flash, a train-type badge (e.g. Golden Kappa), and an end-of-train summary. All four moments (start / progress / level-up / end) are also pushed to the add-on WebSocket for tools like plagCue. Requires a one-time Twitch re-authentication — plagComms prompts you at startup.",
+        "Docked chat now matches the pop-out: a Raid / Poll / Chat-Modes toolbar, a prominent incoming-raid card with one-click Shoutout, VIP and /announce message highlighting, TikTok emotes, emotes in shared sub messages, profile pictures on sub/cheer/raid events, and a platform tag that stays readable with dark custom colors.",
+        "Raid screen simplified — no more countdown timer; pick the channel and hit SEND RAID (or Cancel). Twitch's own on-channel countdown takes it from there. Applies to both the docked chat and pop-out.",
+        "Horizontal chat bar redesigned — larger, bolder, full-white text, with long messages wrapping to a second line. Still fits the standard 80px browser source, no OBS changes needed.",
+        "Reliability: the Twitch event connection now detects silent drops and reconnects itself. Previously gifts, cheers, follows, raids, and ad alerts could silently stop arriving until the app was restarted.",
+        "Ad notices fixed and smarter — the amber 'Ad in M:SS' countdown now actually appears, the red AD BREAK banner reliably fires, and the countdown self-calibrates to your channel's real ad timing so 'Ad starting…' no longer lingers.",
+        "Deleting a message from the docked chat or pop-out now removes it everywhere — both streamer chats and the OBS overlay.",
+        "Dashboard and overlay stats can no longer be wiped to 0 by a failed go-live — your cached real follower/subscriber counts are kept on screen."
+      ]
+    },
     {
       "version": "1.0.2",
       "date": "2026-06-19",
