@@ -1,8 +1,8 @@
 # plagComms
 
-**plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, and YouTube Live into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
+**plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.2  
+> **Current Version:** 1.0.4  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -19,6 +19,7 @@ plagComms runs silently in your system tray and serves a browser-source overlay 
 - **Twitch** — chat, cheers (bits), subscriptions, gift subs, new followers, raids, channel point redemptions, Watch Streak Power-Ups, moderation actions, and ad-break notifications
 - **TikTok Live** — chat, gifts (with real gift images), likes, follows, shares, subscriptions, superfan events
 - **YouTube Live** — chat (with emoji & stickers rendered inline), Superchats, Super Stickers, memberships (new, milestones, gifted), and synthesized new-subscriber alerts
+- **Kick** — chat (with badges, emotes, and platform-colored names), subscriptions, gifted subs, hosts, and new-follower alerts; send messages and moderate (Delete / Timeout / Ban) from either streamer chat
 
 ### OBS Overlay
 - Browser-source overlay served locally over WebSocket
@@ -192,6 +193,31 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 
 ## Changelog
 
+### 1.0.4 — 2026-07-18 — Kick Support
+
+- **Kick is now a first-class platform** alongside Twitch, TikTok, and YouTube. Sign in with Kick and plagComms pulls your Kick **chat** (badges, emotes, platform-colored names), **subscriptions**, **gifted subs**, **hosts**, and **new-follower alerts** into the OBS overlay, docked chat, and pop-out. **Send** messages to Kick from either streamer chat, and **moderate** with **Delete / Timeout / Ban** — just like Twitch. *(Kick follows are detected from your follower count and announce anonymously.)*
+- **Hype Train banner shows the true size** — it now reads Twitch's authoritative point total and level, so contributions that happened *before* the train started (a gift-bomb that launches you straight to level 3) and, for **shared Hype Trains**, the **combined** total across both channels are reflected — instead of only what plagComms counted after the banner appeared.
+- **Shared Chat source in the dock** — messages from a partner channel now show which room they came from in the docked chat too (the pop-out already did), so all three surfaces match.
+- **Docked emotes fixed** — wide BetterTTV/7TV emotes are no longer squished into a square, and emote-only messages are now enlarged like they are in the pop-out and OBS overlay.
+- **TikTok duplicate messages fixed** — reconnecting no longer replays a backlog of old chat, and overlapping reconnects can no longer show the same message two or three times. Every TikTok message is de-duplicated.
+- **Twitch badges show up more reliably** — newly-earned badges now appear without a reconnect (refreshed periodically instead of only once at connect), and badges earned in a **partner channel** now render on their **Shared Chat** messages instead of showing blank.
+- *If your Twitch or Kick login is missing permissions this version needs, plagComms prompts you to re-authenticate at startup with one click.*
+
+---
+
+### 1.0.3 — 2026-07-03 — Hype Train, Dock Parity & Reliability
+
+- **Hype Train tracking** — a live banner on your streamer chats (docked + pop-out) shows the train's **level**, **progress %**, **time remaining**, and **exact bits + gift-sub totals** (counted by plagComms itself — Twitch only reports fuzzy "hype points"). Includes a level-up flash, a train-type badge (e.g. **GOLDEN KAPPA**), and an end-of-train summary. All four moments (`hype_train_start` / `hype_train_progress` / `hype_train_level_up` / `hype_train_end`) are also pushed to the add-on WebSocket for tools like plagCue. *Requires a one-time Twitch re-auth — plagComms prompts you at startup.*
+- **Docked chat parity overhaul** — the docked chat now matches the pop-out: **Raid / Poll / Chat-Modes toolbar**, a prominent **incoming-raid card with one-click Shoutout**, VIP and `/announce` message highlighting, TikTok emotes, emotes in shared sub messages, profile pictures on sub/cheer/raid events, and a platform tag that stays readable with dark custom colors.
+- **Raid screen simplified** — no more countdown timer; pick the channel and hit **⚔ SEND RAID** (or Cancel). Twitch's own on-channel countdown takes it from there. Both docked chat and pop-out.
+- **Horizontal chat bar redesigned** — larger, bolder, full-white text; long messages wrap to a second line. Still fits the standard 80px browser source — no OBS changes needed.
+- **Reliability: Twitch event connection self-heals** — silent connection drops are now detected and reconnected automatically. Previously gifts, cheers, follows, raids, and ad alerts could quietly stop arriving until an app restart.
+- **Ad notices fixed & smarter** — the amber "⏰ Ad in M:SS" countdown now actually appears, the red "🔴 AD BREAK" banner reliably fires, and the countdown **self-calibrates** to your channel's real ad timing so "Ad starting…" no longer lingers.
+- **Deletes sync everywhere** — deleting a message from the docked chat or pop-out removes it from both streamer chats *and* the OBS overlay.
+- **Stats protected** — a failed go-live can no longer wipe your dashboard/overlay follower & subscriber counts to 0; cached real values are kept on screen.
+
+---
+
 ### 1.0.2 — 2026-06-19 — Raid Tags, YouTube Subs, Ad Notices & Fixes
 
 - **Raid viewer tags** — chatters who arrive with a raid now get a **⚔ tag showing whose raid they came in with**, in the docked chat, pop-out, and OBS overlay. (Twitch never identifies raid viewers directly, so this works by tagging a chatter whose first message of the stream lands within ~2 minutes of a raid; the tag stays for 10 minutes from the raid.)
@@ -217,7 +243,7 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 
 **plagComms is a multi-platform live chat aggregator for streamers on Windows.**
 
-It runs silently in your system tray and connects to your Twitch, TikTok Live, and YouTube Live streams simultaneously — merging all chat, events, and alerts into a single OBS browser-source overlay. No subscriptions, no cloud accounts, no backend. Everything runs locally on your machine.
+It runs silently in your system tray and connects to your Twitch, TikTok Live, YouTube Live, and Kick streams simultaneously — merging all chat, events, and alerts into a single OBS browser-source overlay. No subscriptions, no cloud accounts, no backend. Everything runs locally on your machine.
 
 ---
 
