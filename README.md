@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.4  
+> **Current Version:** 1.0.5  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,15 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.0.5 — 2026-07-19 — Dashboard, Stats Pop-out & Relay Handling
+
+- **Dashboard redesign** — shows **only the platforms you're signed into**, in a tidy **2-column grid** that reflows with no empty gaps when a platform isn't connected. Each platform card has a **collapse toggle** to hide the per-session counters and keep just the live **Followers / Subs / Viewers** — a clean, aligned view.
+- **New "Pop Out Stats" window** — a compact channel-stats window (Followers / Subs / Viewers per connected platform) that **snaps to an edge of the chat pop-out and follows it** as one unit. Pick the snap edge (top / bottom / left / right) from its menu, or drag it away to float freely.
+- **Watch Streak messages now show** — when a viewer shares a Watch Streak Power-Up *with a message*, that message appears in your streamer chats and overlay, not just the milestone line.
+- **Room relay handling** — relayed chat from a partner streamer's room is now **tagged with which room it came from** on every surface (dock, pop-out, overlay), and a room partner's activity **can no longer trigger your own on-stream alerts**. The relay stays **chat-only** — subs, bits, gifts, watch streaks, and mod actions are never shared.
+
+---
 
 ### 1.0.4 — 2026-07-18 — Kick Support
 

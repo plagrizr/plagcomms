@@ -1,8 +1,21 @@
 {
-  "version": "1.0.4",
-  "release_date": "2026-07-18",
+  "version": "1.0.5",
+  "release_date": "2026-07-19",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.0.5",
+      "date": "2026-07-19",
+      "github_tag": "v1.0.5",
+      "github_title": "plagComms v1.0.5 - Dashboard, Stats Pop-out & Relay Handling",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.5/plagComms.exe",
+      "notes": [
+        "Dashboard redesign — it now shows only the platforms you're signed into, laid out in a tidy 2-column grid that reflows with no empty gaps when a platform isn't connected. Each platform card has a collapse toggle so you can hide the per-session counters and keep just the live Followers / Subs / Viewers, for a clean, aligned view.",
+        "New \"Pop Out Stats\" window — a compact channel-stats window (Followers / Subs / Viewers for each connected platform) that snaps to an edge of the chat pop-out and follows it as one unit. Pick the snap edge (top / bottom / left / right) from its menu, or drag it away to float freely.",
+        "Watch Streak messages now show — when a viewer shares a Watch Streak Power-Up with a message, that message now appears in your streamer chats and overlay, instead of only the milestone line.",
+        "Room relay handling — relayed chat from a partner streamer's room is now tagged with which room it came from on every surface (dock, pop-out, and overlay), and a room partner's activity can no longer trigger your own on-stream alerts. The relay stays chat-only — subs, bits, gifts, watch streaks, and mod actions are never shared."
+      ]
+    },
     {
       "version": "1.0.4",
       "date": "2026-07-18",
