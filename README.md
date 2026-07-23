@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.7  
+> **Current Version:** 1.0.6  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,13 +192,6 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
-
-### 1.0.7 — 2026-07-23 — TikTok Hotfix
-
-- **Fixes TikTok not connecting at all.** The TikTok library update in 1.0.6 (needed for TikTok's site change) renamed an event, which unintentionally **disabled TikTok entirely** in 1.0.6 — it wouldn't even try to connect. This restores TikTok, and **hardens** the integration so a future TikTok library change can only affect one event type instead of taking down the whole platform. *If you're on 1.0.6, please update.*
-- Guarded the TikTok profile-stats fetch and connection error handling against TikTok returning blocked/empty responses.
-
----
 
 ### 1.0.6 — 2026-07-23 — TikTok Fix & Sign-in Security
 

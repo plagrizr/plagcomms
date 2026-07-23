@@ -1,19 +1,8 @@
 {
-  "version": "1.0.7",
+  "version": "1.0.6",
   "release_date": "2026-07-23",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
-    {
-      "version": "1.0.7",
-      "date": "2026-07-23",
-      "github_tag": "v1.0.7",
-      "github_title": "plagComms v1.0.7 - TikTok Hotfix",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.7/plagComms.exe",
-      "notes": [
-        "Fixes TikTok not connecting at all. The TikTok library update in 1.0.6 (needed to fix TikTok's site change) renamed an event, which unintentionally disabled TikTok entirely in 1.0.6 — it wouldn't even try to connect. This restores TikTok, and hardens the integration so a future TikTok library change can only affect one event type instead of disabling the whole platform. If you're on 1.0.6, please update.",
-        "Guarded the TikTok profile-stats fetch and connection error handling against TikTok returning blocked/empty responses."
-      ]
-    },
     {
       "version": "1.0.6",
       "date": "2026-07-23",
