@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.5  
+> **Current Version:** 1.0.6  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,15 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.0.6 — 2026-07-23 — TikTok Fix & Sign-in Security
+
+- **TikTok connection fixed (important)** — TikTok changed their website and blocked the method plagComms used to find your live stream, so TikTok stopped connecting entirely and just sat *watching* forever. Updated the underlying TikTok library to restore connections, and plagComms now **tells you** if TikTok blocks it again instead of failing silently.
+- **Sign-in security** — added the OAuth **`state` check** (protection against sign-in hijacking) to **Twitch and YouTube** login, resolving a Google security warning. *You'll be asked to re-authenticate Twitch and YouTube once.* (Kick already had this.)
+- **Add-ons** — chat events on the add-on WebSocket now include **`is_mod` / `is_vip` / `is_subbed`** flags, so tools like plagCue can stage different alerts for moderators, VIPs, and subscribers.
+- **Browser sources no longer cache** — the OBS dock, overlay, and stats pages always load fresh after an update, so a newly added feature can't get stuck behind a stale cached page in OBS.
+
+---
 
 ### 1.0.5 — 2026-07-19 — Dashboard, Stats Pop-out & Relay Handling
 
