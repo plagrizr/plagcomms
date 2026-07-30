@@ -1,19 +1,21 @@
 {
-  "version": "1.0.6",
-  "release_date": "2026-07-23",
+  "version": "1.0.7",
+  "release_date": "2026-07-26",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
     {
-      "version": "1.0.6",
-      "date": "2026-07-23",
-      "github_tag": "v1.0.6",
-      "github_title": "plagComms v1.0.6 - TikTok Fix & Sign-in Security",
-      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.6/plagComms.exe",
+      "version": "1.0.7",
+      "date": "2026-07-26",
+      "github_tag": "v1.0.7",
+      "github_title": "plagComms v1.0.7 - TikTok Fixes, Overlay Scaling & Stability",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.0.7/plagComms.exe",
       "notes": [
-        "TikTok connection fixed (important) — TikTok changed their website and blocked the method plagComms used to find your live stream, so TikTok stopped connecting entirely and just sat 'watching' forever. Updated the underlying TikTok library to restore connections. And if TikTok ever blocks it again, plagComms now tells you instead of failing silently.",
+        "TikTok fixed after their site changes (important) — TikTok changed their website and broke several things at once: connecting to your stream (it sat 'watching' forever and never connected), gift images (showed a plain diamond instead of the gift art), native TikTok emotes, and duplicate-message filtering (you could suddenly get blasted with repeated messages). All restored. plagComms now also warns you instead of failing silently if TikTok blocks it again.",
         "Sign-in security — added the OAuth 'state' check (protection against sign-in hijacking) to Twitch and YouTube login, resolving a Google security warning on the YouTube app. You'll be asked to re-authenticate Twitch and YouTube once. (Kick already had this.)",
+        "Overlay sizing overhaul — the vertical chat overlay now scales itself to fill whatever size browser source you draw, so it looks consistent at any resolution instead of stretching the pfp to the far left and badges to the far right. A new 'Chat width' setting (Appearance) controls the design width. The horizontal bar can optionally scale to its source height too ('Horizontal bar height') — draw a thin strip and the messages size to it, no more enlarge-and-crop. Because sizing is now proportional, OBS/Meld Fit and Fill modes work properly too.",
+        "Channel Stats pop-out fixes — it now follows your chat pop-out's 'Always on Top' setting instead of always floating over everything; it re-attaches correctly after you close and reopen the chat pop-out; it no longer gets left orphaned on screen when you exit the app; and a rare crash-on-close was hardened.",
         "Add-ons — chat events sent to the add-on WebSocket now include is_mod / is_vip / is_subbed flags, so tools like plagCue can stage different alerts for moderators, VIPs, and subscribers.",
-        "Browser sources no longer cache — the OBS dock, overlay, and stats pages now always load fresh after an update, so a newly added feature can't get stuck behind a stale cached page in OBS."
+        "Browser sources no longer cache — the OBS dock, overlay, and stats pages always load fresh after an update, so a newly added feature can't get stuck behind a stale cached page in OBS."
       ]
     },
     {
