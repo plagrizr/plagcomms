@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.7  
+> **Current Version:** 1.0.8  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,15 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.0.8 — 2026-08-06 — TikTok Emotes, YouTube Horizontal Chat & Add-on Status
+
+- **TikTok emotes fixed** — after TikTok's site changes, **native TikTok emotes** (the ones from the emote picker) stopped showing in chat entirely, and viewers who **chat only in emotes** disappeared from chat completely. Both are fixed: emotes render again and emote-only chatters show up.
+- **YouTube horizontal stream chat fixed** — if you stream horizontally through an encoder (OBS stream key) while also live on Shorts, plagComms was only pulling the **Shorts** chat and silently ignoring the **horizontal** stream's messages. Both streams' chat now come through again.
+- **YouTube dual-stream clarity** — when you're live on two YouTube broadcasts at once, plagComms now labels each by its **stream-key name** (e.g. `meldHorizontal` / `meldVertical`) in the activity log, and no longer double-counts a single stream that YouTube sometimes reports as two.
+- **Add-ons** — add-ons now receive a platform **`status`** pulse (which platforms are set up and which are live), so tools like plagCue can **auto-detect** your platforms instead of being hard-coded to a fixed list.
+
+---
 
 ### 1.0.7 — 2026-07-26 — TikTok Fixes, Overlay Scaling & Stability
 
