@@ -200,6 +200,8 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 - **Hide commands** — a new **Filters** option (Settings) hides chat starting with `!` from your overlay and streamer chats, while **still** sending it to add-ons/plagCue over the WebSocket. One global on/off for all platforms.
 - **Fixed** settings controls changing value when you scroll the page — mouse-wheel over a spinbox/dropdown/slider now scrolls the page instead of nudging the value.
 - **Twitch Shared Chat no longer triggers your add-ons** — a viewer typing `!teatime` (or any command) in a **partner channel's** shared chat will no longer fire your plagCue/add-on commands. Shared chat still displays if enabled; it just won't trigger anything — matching how multi-streamer rooms already behaved.
+- **Live status** — the dashboard now shows each platform as **Offline / Connected / LIVE** instead of just "connected" whenever plagComms is running. Twitch & Kick distinguish being on chat vs actually broadcasting (TikTok/YouTube are live whenever connected). Add-ons get it too: the status pulse includes a **`live`** flag per platform, plus a new **`live_status`** signal the instant you go live/offline, so tools can react when your stream actually starts or ends.
+- **Chat pop-out fixed** — after closing both the main window and the chat pop-out, reopening it could load very slowly and sometimes crash. It now loads fast and reliably.
 
 ---
 
