@@ -1,8 +1,22 @@
 {
-  "version": "1.0.8",
-  "release_date": "2026-08-06",
+  "version": "1.1.0",
+  "release_date": "2026-08-08",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-08-08",
+      "github_tag": "v1.1.0",
+      "github_title": "plagComms v1.1.0 - Sidebar Redesign, Dashboard Layout & Command Hiding",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.1.0/plagComms.exe",
+      "notes": [
+        "Cleaner sidebar — platform and app settings now live under a single collapsible 'Settings' menu (color-coded per platform: Twitch, YouTube, TikTok, Kick, General), and the setup pages (Settings, Appearance, Updates) moved to the bottom. The top of the sidebar stays focused on what you actually use while live (Dashboard, Room, Add-ons).",
+        "Dashboard layout — platform cards of the same height now pair up side by side (Twitch+TikTok, YouTube+Kick) when both are set up, so expanding them makes better use of the space instead of leaving a tall card next to a short one.",
+        "Hide commands — a new Filters option (Settings) hides chat messages starting with '!' from your overlay and streamer chats, while STILL sending them to add-ons/plagCue over the WebSocket. One global on/off for all platforms.",
+        "Fixed settings controls changing value when you scroll the page — mouse-wheel over a spinbox, dropdown, or slider on the Appearance/Settings pages now scrolls the page instead of nudging the value. Use the arrow keys or type to change a value.",
+        "Twitch Shared Chat no longer triggers your add-ons — a viewer typing a command like '!teatime' in a partner channel's shared chat will no longer fire your plagCue/add-on commands. Shared chat still displays (if you have it enabled); it just won't trigger anything, matching how multi-streamer rooms already behaved."
+      ]
+    },
     {
       "version": "1.0.8",
       "date": "2026-08-06",

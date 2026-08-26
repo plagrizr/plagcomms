@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.0.8  
+> **Current Version:** 1.1.0  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -193,6 +193,16 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 
 ## Changelog
 
+### 1.1.0 — 2026-08-08 — Sidebar Redesign, Dashboard Layout & Command Hiding
+
+- **Cleaner sidebar** — platform and app settings now live under a single collapsible **Settings** menu (color-coded per platform: Twitch, YouTube, TikTok, Kick, General), and the setup pages (Settings, Appearance, Updates) moved to the bottom. The top stays focused on what you use while live (Dashboard, Room, Add-ons).
+- **Dashboard layout** — platform cards of the same height now **pair up side by side** (Twitch+TikTok, YouTube+Kick) when both are set up, so expanding them uses the space better instead of leaving a tall card beside a short one.
+- **Hide commands** — a new **Filters** option (Settings) hides chat starting with `!` from your overlay and streamer chats, while **still** sending it to add-ons/plagCue over the WebSocket. One global on/off for all platforms.
+- **Fixed** settings controls changing value when you scroll the page — mouse-wheel over a spinbox/dropdown/slider now scrolls the page instead of nudging the value.
+- **Twitch Shared Chat no longer triggers your add-ons** — a viewer typing `!teatime` (or any command) in a **partner channel's** shared chat will no longer fire your plagCue/add-on commands. Shared chat still displays if enabled; it just won't trigger anything — matching how multi-streamer rooms already behaved.
+
+---
+
 ### 1.0.8 — 2026-08-06 — TikTok Emotes, YouTube Horizontal Chat & Add-on Status
 
 - **TikTok emotes fixed** — after TikTok's site changes, **native TikTok emotes** (the ones from the emote picker) stopped showing in chat entirely, and viewers who **chat only in emotes** disappeared from chat completely. Both are fixed: emotes render again and emote-only chatters show up.
@@ -287,7 +297,7 @@ It runs silently in your system tray and connects to your Twitch, TikTok Live, Y
 - 📊 **Session Stats** — live counters for messages, bits, subs, gifts, Superchats, and more across all platforms
 - 📝 **Chat Logging** — opt-in SQLite logging with a built-in search and CSV export
 - 🔒 **Secure by default** — OAuth tokens and API keys stored in Windows Credential Manager, never written to disk in plain text
-- 🔌 **Add-on WebSocket** — local WebSocket endpoint lets you build custom tools that react to any stream event in real time (see `Events/ADDON_GUIDE.md`)
+- 🔌 **Add-on WebSocket** — a local WebSocket endpoint (`ws://localhost:54473/addons/ws`) lets you build custom tools that react to any stream event in real time (chat, follows, subs, gifts, raids, go-live), with a platform status/live pulse for auto-detection
 
 ---
 
