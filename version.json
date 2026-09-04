@@ -1,8 +1,21 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "release_date": "2026-08-26",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-08-26",
+      "github_tag": "v1.2.0",
+      "github_title": "plagComms v1.2.0 - Twitch Chat GIFs & Bits Power-ups",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.2.0/plagComms.exe",
+      "notes": [
+        "Twitch chat GIFs (tier 2/3) — GIFs that Tier 2/3 subscribers post in chat now show up in plagComms. In the streamer chat and the OBS overlay they render BELOW the message (like a gigantified emote) so a wide GIF never stretches your chat, sized to a comfortable height; on the horizontal bar they appear as a small inline GIF that fits the line. New Enable/Disable toggles under Twitch → Event Visibility let you turn GIFs on/off separately for the Overlay and the Streamer Chat (hidden shows the GIF's title text instead). GIFs are also sent to add-ons over the WebSocket (in the chat event's new 'gifs' field), so tools like plagCue can react to them.",
+        "Twitch custom Bits Power-ups — when a viewer redeems one of your custom Bits Power-ups (e.g. '20 squats now'), it now shows in your streamer chat and overlay with the Power-up title and the bit amount, instead of being missed. New Enable/Disable toggles (Twitch → Event Visibility) for the Overlay and Streamer Chat, and it's sent to add-ons over the WebSocket (new 'power_up' event) so tools can trigger on it. No re-authentication needed.",
+        "Bit events now wear a Twitch-bit gem — cheers and custom Bits Power-ups show a small purple Twitch-bit icon in your streamer chat and overlay (in place of the old 💎/⚡ emoji), so bit activity reads at a glance. The icon is built into plagComms, so it can't break if Twitch moves their artwork. Cosmetic only — the data add-ons receive is unchanged.",
+        "Fixed TikTok viewer count showing nothing — a TikTokLive library update renamed the concurrent-viewer field, which silently zeroed the live viewer count on the dashboard and stats overlay (chat still worked). The count is read correctly again."
+      ]
+    },
     {
       "version": "1.1.0",
       "date": "2026-08-08",

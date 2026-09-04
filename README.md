@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.1.0  
+> **Current Version:** 1.2.0  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,15 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.2.0 — 2026-08-26 — Twitch Chat GIFs & Bits Power-ups
+
+- **Twitch chat GIFs (tier 2/3)** — GIFs that Tier 2/3 subscribers post in chat now show up in plagComms. In the **streamer chat** and **OBS overlay** they render **below the message** (like a gigantified emote) so a wide GIF never stretches your chat; on the **horizontal bar** they appear as a **small inline GIF** that fits the line. New **Enable/Disable** toggles (Twitch → Event Visibility) for the **Overlay** and **Streamer Chat** separately — hidden shows the GIF's title text instead. GIFs are also sent to **add-ons** over the WebSocket (chat event's new `gifs` field).
+- **Twitch custom Bits Power-ups** — when a viewer redeems one of your custom Bits Power-ups (e.g. "20 squats now"), it now appears in your streamer chat and overlay with the **Power-up title + bit amount**. New Enable/Disable toggles (Twitch → Event Visibility), and it's sent to add-ons over the WebSocket as a new **`power_up`** event. No re-authentication needed.
+- **Bit events now wear a Twitch-bit gem** — cheers and custom Bits Power-ups show a small purple **Twitch-bit icon** in your streamer chat and overlay (replacing the old 💎/⚡ emoji), so bit activity reads at a glance. The icon is embedded in plagComms, so it can't break if Twitch moves their artwork. Cosmetic only — the data add-ons receive is unchanged.
+- **Fixed TikTok viewer count showing nothing** — a TikTokLive library update renamed the concurrent-viewer field, silently zeroing the live viewer count on the dashboard and stats overlay (chat kept working). It reads correctly again.
+
+---
 
 ### 1.1.0 — 2026-08-08 — Sidebar Redesign, Dashboard Layout & Command Hiding
 
