@@ -199,6 +199,7 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 - **Twitch custom Bits Power-ups** — when a viewer redeems one of your custom Bits Power-ups (e.g. "20 squats now"), it now appears in your streamer chat and overlay with the **Power-up title + bit amount**. New Enable/Disable toggles (Twitch → Event Visibility), and it's sent to add-ons over the WebSocket as a new **`power_up`** event. No re-authentication needed.
 - **Bit events now wear a Twitch-bit gem** — cheers and custom Bits Power-ups show a small purple **Twitch-bit icon** in your streamer chat and overlay (replacing the old 💎/⚡ emoji), so bit activity reads at a glance. The icon is embedded in plagComms, so it can't break if Twitch moves their artwork. Cosmetic only — the data add-ons receive is unchanged.
 - **Fixed TikTok viewer count showing nothing** — a TikTokLive library update renamed the concurrent-viewer field, silently zeroing the live viewer count on the dashboard and stats overlay (chat kept working). It reads correctly again.
+- **Fixed settings/logins being wiped** — if plagComms was closed or killed at just the wrong moment while saving settings, the file could be left half-written and then silently reset to defaults on the next launch, losing your channel logins and preferences. Settings are now written **atomically with an automatic backup** (restored if the file is ever damaged), so an interrupted save can't wipe your config. Your Twitch/TikTok credentials live in Windows Credential Manager and were never at risk.
 
 ---
 
