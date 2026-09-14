@@ -1,8 +1,21 @@
 {
-  "version": "1.2.0",
-  "release_date": "2026-08-26",
+  "version": "1.2.1",
+  "release_date": "2026-09-10",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.2.1",
+      "date": "2026-09-10",
+      "github_tag": "v1.2.1",
+      "github_title": "plagComms v1.2.1 - All Your Twitch Emotes",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.2.1/plagComms.exe",
+      "notes": [
+        "All your Twitch emotes, everywhere — the emote picker in the streamer chat (type ':' then a couple of letters) now includes EVERY emote your account can use, not just your own channel's. That means subscriber emotes from all the channels you're subscribed to, follower emotes, and your Bits / Hype-Train unlocks — the full set tied to your Twitch login. Requires a one-time Twitch re-authentication to grant the new emote permission; plagComms prompts you at startup.",
+        "Fixed input fields clipping the bottom of typed text (letters like 'y' and 'p' were cut off) — text boxes now reserve enough height across the settings pages, including the TikTok EulerStream key field.",
+        "Swap your EulerStream key without interrupting the watch — the TikTok setup now has a dedicated 'Save Key' button that just saves the key (and username). plagComms picks it up on the next connection attempt automatically, so you no longer have to Stop Watching and then Save & Start Watching just to change your key.",
+        "TikTok LIVE connects again — a TikTok/EulerStream change in early September broke the TikTok live connection (it would find your stream but never actually connect). Updated the TikTok engine to the fixed version, verified against a live stream. No re-setup or new key needed."
+      ]
+    },
     {
       "version": "1.2.0",
       "date": "2026-08-26",

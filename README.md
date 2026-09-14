@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.2.0  
+> **Current Version:** 1.2.1  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,15 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.2.1 — 2026-09-10 — All Your Twitch Emotes
+
+- **All your Twitch emotes, everywhere** — the emote picker in the streamer chat (type `:` then a couple of letters) now includes **every emote your account can use**, not just your own channel's: **subscriber emotes from all the channels you're subscribed to**, **follower emotes**, and your **Bits / Hype-Train unlocks**. Requires a **one-time Twitch re-authentication** to grant the new emote permission — plagComms prompts you at startup.
+- **Fixed input fields clipping typed text** — letters like `y`/`p` had their bottoms cut off in some text boxes (e.g. the TikTok EulerStream key field); fields now reserve enough height.
+- **Swap your EulerStream key without interrupting the watch** — the TikTok setup now has a dedicated **Save Key** button that just saves the key (and username). plagComms applies it on the next connection attempt, so no more *Stop Watching → Save & Start Watching* just to change your key.
+- **TikTok LIVE connects again** — a TikTok/EulerStream change in early September broke the TikTok live connection (it found your stream but never actually connected). Updated the TikTok engine to the fixed version, verified against a live stream. No re-setup or new key needed.
+
+---
 
 ### 1.2.0 — 2026-08-26 — Twitch Chat GIFs & Bits Power-ups
 
