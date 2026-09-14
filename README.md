@@ -193,12 +193,12 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 
 ## Changelog
 
-### 1.2.1 — 2026-09-10 — All Your Twitch Emotes
+### 1.2.1 — 2026-09-13 — TikTok LIVE Fixed + All Your Twitch Emotes
 
+- **TikTok LIVE is back** — a TikTok/EulerStream change in early September broke the TikTok live connection for about a week: plagComms would find your stream but never actually connect (the WebSocket handshake was being rejected). It's **fixed** — the TikTok engine is updated to the patched version, verified against a live stream. **No re-setup, no new key, nothing to reconfigure** — just update and TikTok connects again.
 - **All your Twitch emotes, everywhere** — the emote picker in the streamer chat (type `:` then a couple of letters) now includes **every emote your account can use**, not just your own channel's: **subscriber emotes from all the channels you're subscribed to**, **follower emotes**, and your **Bits / Hype-Train unlocks**. Requires a **one-time Twitch re-authentication** to grant the new emote permission — plagComms prompts you at startup.
-- **Fixed input fields clipping typed text** — letters like `y`/`p` had their bottoms cut off in some text boxes (e.g. the TikTok EulerStream key field); fields now reserve enough height.
 - **Swap your EulerStream key without interrupting the watch** — the TikTok setup now has a dedicated **Save Key** button that just saves the key (and username). plagComms applies it on the next connection attempt, so no more *Stop Watching → Save & Start Watching* just to change your key.
-- **TikTok LIVE connects again** — a TikTok/EulerStream change in early September broke the TikTok live connection (it found your stream but never actually connected). Updated the TikTok engine to the fixed version, verified against a live stream. No re-setup or new key needed.
+- **Fixed input fields clipping typed text** — letters like `y`/`p` had their bottoms cut off in some text boxes (e.g. the TikTok EulerStream key field); fields now reserve enough height.
 
 ---
 
