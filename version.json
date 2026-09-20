@@ -1,8 +1,20 @@
 {
-  "version": "1.2.1",
-  "release_date": "2026-09-13",
+  "version": "1.2.2",
+  "release_date": "2026-09-16",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "1.2.2",
+      "date": "2026-09-16",
+      "github_tag": "v1.2.2",
+      "github_title": "plagComms v1.2.2 - Send Only to Channels You're Live On",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v1.2.2/plagComms.exe",
+      "notes": [
+        "The chat send list now shows live status — the send-target picker on your streamer chat (pop-out and OBS dock) marks each platform '(not live)' when you're not broadcasting, and updates the instant you go live or end your stream. YouTube is only sendable while live (its chat only exists during a stream), but Twitch and Kick stay sendable whenever connected — their chat works offline, so you can still post and test before you go live.",
+        "Fixed the OBS overlay 'catching up' with a flood of messages — if the overlay browser source got hidden or throttled (e.g. off-scene, or the PC was busy), OBS/Chromium would pause it and quietly queue incoming chat, then dump 200+ messages at once and scroll-storm through them when it came back. The overlay now coalesces incoming messages and, on a big catch-up, snaps straight to the newest few instead of churning hundreds of rows — no more runaway scroll.",
+        "Fixed a crash when picking an emote from the ':name' autocomplete in the pop-out chat, and made that list open much faster. Selecting an emote could hard-crash the app; it's now handled safely. The list was also slow to appear because a broad search (e.g. ':a') tried to build a row and load an image for every matching emote across your whole emote set — it now shows the top matches only, so it pops up instantly."
+      ]
+    },
     {
       "version": "1.2.1",
       "date": "2026-09-10",

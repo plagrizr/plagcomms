@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.2.1  
+> **Current Version:** 1.2.2  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,14 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.2.2 — 2026-09-16 — Send Only to Channels You're Live On
+
+- **The chat send list now shows live status** — the send-target picker on your streamer chat (**pop-out** and **OBS dock**) marks each platform **"(not live)"** when you're not broadcasting, and updates the instant you go live or end your stream. **YouTube** is only sendable while live (its chat only exists during a stream), but **Twitch and Kick stay sendable whenever connected** — their chat works offline, so you can still post and test before you go live.
+- **Fixed the OBS overlay "catching up" with a flood of messages** — if the overlay browser source got hidden or throttled (off-scene, or the PC was busy), OBS/Chromium would pause it and quietly queue incoming chat, then dump **200+ messages at once** and scroll-storm through them on resume. The overlay now coalesces incoming messages and, on a big catch-up, **snaps straight to the newest few** instead of churning hundreds of rows.
+- **Fixed an emote-picker crash + made it fast** — selecting an emote from the `:name` autocomplete in the pop-out chat could hard-crash the app; it's now handled safely. The list was also slow to open because a broad search built a row and loaded an image for **every** matching emote across your full set — it now shows the top matches only, so it appears instantly.
+
+---
 
 ### 1.2.1 — 2026-09-13 — TikTok LIVE Fixed + All Your Twitch Emotes
 
