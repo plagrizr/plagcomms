@@ -2,7 +2,7 @@
 
 **plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.2.2  
+> **Current Version:** 1.3.0  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
@@ -192,6 +192,14 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 1.3.0 — 2026-09-21
+
+- **New Emote Library for add-ons** — plagComms now builds a shared library of your emotes and sends it to connected add-ons (like **plagCue**) over the WebSocket, so tools can use specific emotes as **triggers**. In the **Add-ons** page you choose **à la carte** which emotes are shared — **My channel**, **Subscribed channels**, **Twitch global**, and **External (BTTV/FFZ/7TV)** — plus **TikTok, YouTube, and Kick** emotes as they appear in your chat. Every emote is **tagged by origin** (mine / subbed / global / external) so tools can filter and sort, your **own channel's emotes are sent first**, and a **stable ID** lets add-ons match an emote regardless of the size it's shown at. A **"Sync Emotes"** button on the Dashboard pushes the library on demand; **TikTok, YouTube, and Kick** each get a **"Flush emotes"** button in their settings; and the library **persists between restarts**. *(This only affects what's sent to add-ons — your `:` emote autocomplete still has your full set.)*
+- **Editable message bubble** — the highlight behind each message on the OBS overlays is now yours to style. Under **Appearance** you can set the **color and transparency** separately for the **vertical overlay** and the **horizontal feed**, changes apply live, and a **Reset** button returns each to its default.
+- **YouTube now asks for a single permission** — plagComms previously requested a YouTube "channel memberships" permission that was only used to show a member count. That extra permission was triggering Google's **"this app hasn't been verified"** warning at login, so it has been **removed**. YouTube sign-in now requests only the one permission plagComms actually needs to read and send your live chat. As a result the **"Members" stat is temporarily gone**, and you'll need to **reconnect YouTube once** — disconnect and log in again — so the old permission is dropped and the warning clears.
+
+---
 
 ### 1.2.2 — 2026-09-16 — Send Only to Channels You're Live On
 
