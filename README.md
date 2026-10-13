@@ -1,8 +1,7 @@
 # plagComms
 
-**plagComms** is a multi-platform live chat aggregator and OBS overlay tool for streamers. It pulls chat from Twitch, TikTok Live, YouTube Live, and Kick into a single unified overlay — and lets multiple streamers share each other's chat in real time through a room system.
+**plagComms** is a free **streaming command center** for Windows — a multi-tool that unifies Twitch, TikTok Live, YouTube Live, and Kick chat and events into one OBS overlay, dock, and pop-out, then extends itself with add-on apps and themes you install from a built-in store. It also lets multiple streamers share each other's chat in real time through a room system.
 
-> **Current Version:** 1.3.0  
 > **Platform:** Windows (standalone `.exe`)
 
 ---
