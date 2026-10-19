@@ -1,8 +1,19 @@
 {
-  "version": "2.0.0",
-  "release_date": "2026-10-12",
+  "version": "2.0.1",
+  "release_date": "2026-10-19",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "2.0.1",
+      "date": "2026-10-19",
+      "github_tag": "v2.0.1",
+      "github_title": "plagComms v2.0.1 — Window Snapping & Activity Window",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v2.0.1/plagComms-Setup-2.0.1.exe",
+      "notes": [
+        "Window snapping, refined — the Chat, Activity and Stats pop-out windows snap together more crisply (a wider, snappier magnet), you can slide snapped windows along a shared edge to line them up, and drag a window away to detach it. Minimizing the chat pop-out now hides its snapped group with it, and they come back where you left them. Toggle it under Appearance.",
+        "Activity pop-out redesigned — it now matches the Channel Stats window: a clean frameless window with just a close button, freely resizable, and it follows your pop-out's 'always on top' setting. The feed now reads newest-at-the-bottom like chat and auto-follows new activity as it arrives (scroll up to read history and it won't yank you back down)."
+      ]
+    },
     {
       "version": "2.0.0",
       "date": "2026-10-12",

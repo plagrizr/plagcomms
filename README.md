@@ -119,12 +119,14 @@ All user-generated files live in `%APPDATA%\plagComms\`:
 
 ## Installation
 
-1. Download the latest `plagComms.exe` from [Releases](https://github.com/plagrizr/plagcomms/releases/latest)
-2. Run the exe — no installer needed
-3. plagComms starts in the system tray
+1. Download the latest **`plagComms-Setup-x.y.z.exe`** from [Releases](https://github.com/plagrizr/plagcomms/releases/latest)
+2. Run the installer (per-user — no administrator rights required)
+3. plagComms installs and starts in the system tray
 4. Open the settings window from the tray icon and connect your platforms
 5. Add `http://localhost:54473/chatbot` as a Browser Source in OBS
 6. Optionally add `http://localhost:54473/chatbot/dock` as a Custom Browser Dock in OBS
+
+> **Updating from 1.x is a one-time manual step** — download and run the 2.0 installer once. After that, updates are automatic (plagComms self-updates in place).
 
 ---
 
@@ -191,6 +193,27 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 ---
 
 ## Changelog
+
+### 2.0.1 — 2026-10-19 — Window Snapping & Activity Window
+
+- **Window snapping, refined** — the **Chat, Activity, and Stats** pop-out windows snap together more crisply (a wider, snappier magnet). You can **slide** snapped windows along a shared edge to line them up, and **drag a window away to detach** it. **Minimizing the chat pop-out hides its snapped group with it**, and they return where you left them. Toggle it under **Appearance**.
+- **Activity pop-out redesigned** — it now matches the **Channel Stats** window: a clean **frameless** window with just a close button, **freely resizable**, and it follows your pop-out's **"always on top"** setting. The feed now reads **newest-at-the-bottom** like chat and **auto-follows** new activity as it arrives (scroll up to read history and it won't yank you back down).
+
+---
+
+### 2.0.0 — 2026-10-12 — Streaming Command Center
+
+plagComms 2.0 is a major release — it grew from a multi-platform chat overlay into a full **streaming command center** that also **hosts add-on apps and themes** which run inside it.
+
+- **Add-on apps ("plagins")** run inside plagComms and react to the same live events the overlay does — **Goal** (sub/bit goals + subathon countdown), **Talk** (multi-platform TTS), **Cue** (fire video/audio/image alerts on your overlay), and **Credits** (end-of-stream credits roll). Browse and one-click-install them from the new **in-app store**.
+- **Themes** reskin the entire app **and** your overlays. Preview each one live on the **Add-Ons ▸ Themes** page and install more from the same store.
+- **Activity feed** — a filterable text event dock (and native pop-out) of follows, cheers/coins/Super Chats, channel points, power-ups, subs, gift subs, raids, watch streaks, and mod actions across all platforms. It keeps a **persistent history**, loads recent events on open, and **backfills your full Twitch follow history** (with real dates) on connect.
+- **Window snapping** for the Chat/Activity/Stats pop-outs (see 2.0.1 for the refinements).
+- **Kick is now a first-class fourth platform** alongside Twitch, TikTok Live, and YouTube Live.
+- Per-message platform badges are now the **real platform logos**, and **BTTV Pro personal emotes** render inline on your chat surfaces.
+- **New installer and self-updater.** Upgrading from 1.x is a **one-time manual step** — download and run the 2.0 installer from the releases page. After that, updates are automatic again.
+
+---
 
 ### 1.3.0 — 2026-09-21
 
