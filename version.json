@@ -1,8 +1,34 @@
 {
-  "version": "2.0.1",
-  "release_date": "2026-10-19",
+  "version": "2.1.1",
+  "release_date": "2026-11-02",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "2.1.1",
+      "date": "2026-11-02",
+      "github_tag": "v2.1.1",
+      "github_title": "plagComms v2.1.1 - Shared Canvas Overlay, quota-free YouTube & reliability fixes",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v2.1.1/plagComms-Setup-2.1.1.exe",
+      "notes": [
+        "NEW - Shared Canvas Overlay: one transparent full-screen overlay that your plagins output onto, so you add a single OBS browser source instead of one per plagin. There's one canvas per orientation - add http://localhost:54473/canvas?o=landscape (1920x1080) or http://localhost:54473/canvas?o=portrait (1080x1920) as a browser source above your chat.",
+        "NEW - Add-Ons > Overlay page: lists every plagin currently drawing on the canvas and lets you set each one's priority (what draws on top), transparency, and visibility - configure your whole overlay here instead of juggling sources in your streaming software. Turning a layer off blanks it instantly without disconnecting, so you can toggle it back on with no delay.",
+        "Plagins opt in per-plagin: each can output to the shared canvas or keep its own standalone overlay. Supported plagins position their content exactly where you want it on the canvas via their own editor. (Your plagins may need an update to add canvas output.)",
+        "Kick chat restored - Kick retired the realtime socket its chat used to ride on, which silently cut off Kick chat. plagComms now connects to Kick's new realtime system, so Kick chat, subs, gifts and hosts come through again. Nothing to reconfigure.",
+        "TikTok chat badges redone to match TikTok - user level, fan club (greyed when expired, gold when the viewer is also a subscriber), top-gifter rank and the moderator badge now render with TikTok's real badge art in native order, and a subscriber's custom sub badge shows right next to their name. Applies to the OBS overlay, dock and pop-out.",
+        "Twitch mod anniversaries now show - when one of your mods hits a modiversary, it appears as a highlighted notice on your streamer chats.",
+        "YouTube reliability fix - the YouTube chat listener could silently die mid-session (after an internal reconnect) and never come back, so a whole stream's messages and new-sub alerts would be missed. It now shuts down cleanly, and a watchdog revives it automatically if it ever stops.",
+        "YouTube now detects you're live without the API quota - going live is found by reading your channel's live page (the same quota-free method chat already uses) instead of the YouTube Data API. So if the daily API quota runs out, plagComms still picks up your stream and reads chat, and the constant 'are we live?' checks no longer burn through the quota in the first place. (A simultaneous vertical + horizontal pair and live viewer/sub counts still use the API when quota is available.)",
+        "Activity feed - filter by platform. The Filter dropdown on the Activity dock and pop-out now has a Platform section (Twitch / TikTok / YouTube / Kick) alongside the existing event-type filters, so you can narrow the feed to just the platforms you want. Each surface remembers its own choices.",
+        "Fixed the Kick dashboard card reading 'Connected' instead of 'LIVE' while you were live - Kick reports going live just before its chat socket finishes connecting, so the dashboard badge missed it. The LIVE state is now re-applied once connected. (Only the dashboard badge was affected; Kick chat, alerts, add-ons and the overlay already knew you were live.)",
+        "Fixed the Channel Stats window dropping to the bottom of the chat pop-out when the pop-out is on a second monitor - it checked the wrong screen's edge and thought there was no room beside it. It now opens alongside the pop-out as intended.",
+        "Pop-out window placement is now remembered properly across restarts. The Chat, Channel Stats and Activity windows each save their position as you move them - so it sticks no matter how you close the app - the Channel Stats window opens beside the chat pop-out instead of underneath it (even on a second monitor), and a snapped group comes back together where you left it, so minimizing the chat pop-out still carries the group with it after a restart.",
+        "Fixed YouTube showing as LIVE when you've only SCHEDULED an upcoming stream. A scheduled broadcast shows an offline 'waiting' slate on your live page that still carries a live-style flag, which the quota-free detector misread as being live. It now treats the scheduled/offline slate as not-live and only flips to LIVE once you actually start streaming.",
+        "NEW - the dashboard YouTube card now shows a 'Scheduled' status when you have an upcoming stream set up (instead of just 'Offline'), and hovering it shows the stream title, its start time with a live countdown, and the waiting-viewer count. It flips to LIVE automatically when you go live. This is read from the same quota-free page check already used to detect live - no extra YouTube permissions or API usage.",
+        "Fixed a YouTube API quota drain. The new-subscriber watcher (which checks your subscriber list while you're live) wasn't being switched off when your stream ended, so it kept quietly polling the YouTube API every 60 seconds around the clock and could exhaust your daily quota while you were offline and away. It now stops the moment a stream ends and only runs while you're actually live, and all YouTube API use now backs off immediately when the daily quota is spent instead of hammering it with errors. This also keeps YouTube chat SENDING working, since that depends on the quota being available.",
+        "Viewer counts now read 0 (instead of a dash) on the dashboard and the Channel Stats window while you're live, so you can tell at a glance that the counter is working.",
+        "NEW - you can hide your viewer counts: click any viewer number on the dashboard or the Channel Stats pop-out and all four platforms' viewer counts turn into a '?' (click again to show them). The setting is shared, so hiding on the dashboard also hides on the pop-out and vice versa, and it's remembered between restarts."
+      ]
+    },
     {
       "version": "2.0.1",
       "date": "2026-10-19",

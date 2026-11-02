@@ -194,6 +194,25 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 
 ## Changelog
 
+### 2.1.1 — 2026-11-02 — Shared Canvas Overlay, quota-free YouTube & reliability fixes
+
+- **NEW — Shared Canvas Overlay** — one transparent full-screen overlay that your plagins output onto, so you add a **single** OBS browser source instead of one per plagin. There's one canvas per orientation: add `http://localhost:54473/canvas?o=landscape` (1920×1080) or `http://localhost:54473/canvas?o=portrait` (1080×1920) as a Browser Source **above your chat**.
+- **NEW — Add-Ons ▸ Overlay page** — lists every plagin currently drawing on the canvas and lets you set each one's **priority** (what draws on top), **transparency**, and **visibility**. Configure your whole overlay here instead of juggling sources in your streaming software. Turning a layer off **blanks it instantly without disconnecting**, so you can toggle it back on with no delay.
+- **Plagins opt in per-plagin** — each can output to the shared canvas **or** keep its own standalone overlay. Supported plagins position their content exactly where you want it on the canvas via their own editor. *(Your plagins may need an update to add canvas output.)*
+- **Kick chat restored** — Kick retired the realtime socket its chat used to ride on, which silently cut off Kick chat. plagComms now connects to Kick's new realtime system, so Kick chat, subs, gifts and hosts come through again. Nothing to reconfigure.
+- **TikTok chat badges, redone to match TikTok** — user level, fan club (greyed when expired, **gold** when the viewer is also a subscriber), top-gifter rank and the moderator badge now render with TikTok's real badge art in native order, and a subscriber's **custom sub badge shows right next to their name**. Across the OBS overlay, dock and pop-out.
+- **Twitch mod anniversaries now show** — when one of your mods hits a modiversary, it appears as a highlighted notice on your streamer chats.
+- **YouTube reliability fix** — the YouTube chat listener could silently die mid-session (after an internal reconnect) and never come back, so a whole stream's messages and new-sub alerts would be missed. It now shuts down cleanly, and a watchdog revives it automatically if it ever stops.
+- **YouTube live detection no longer needs the API quota** — going live is found by reading your channel's live page (the same quota-free method chat already uses) instead of the YouTube Data API, so detection keeps working even when the daily quota is spent and the constant "are we live?" checks no longer burn through it.
+- **Fixed a YouTube API quota drain** — the new-subscriber watcher wasn't switched off when a stream ended, so it kept polling the API every 60s around the clock and could exhaust your daily quota while you were offline. It now only runs while you're actually live, and all YouTube API use backs off immediately when the quota is spent. (This also keeps YouTube chat **sending** working, which depends on the quota.)
+- **NEW — "Scheduled" status for YouTube** — the dashboard shows a *Scheduled* badge when you have an upcoming stream set up, with the title, start time, countdown and waiting-viewer count on hover. It flips to LIVE automatically. Read quota-free from the same live page — no extra permissions. (Also fixed a scheduled stream being misread as *live*.)
+- **Activity feed — filter by platform** — the Filter dropdown on the Activity dock and pop-out now has a Platform section (Twitch / TikTok / YouTube / Kick) alongside the event-type filters.
+- **Window placement fixes** — the Chat, Channel Stats and Activity pop-outs each remember their position (saved as you move them, so it sticks however you close the app), the Channel Stats window opens beside the chat pop-out instead of underneath it (even on a second monitor), and a snapped group comes back together — minimizing the chat pop-out still carries the group after a restart.
+- **Hide your viewer counts** — click any viewer number on the dashboard or the Channel Stats window to turn all four platforms' counts into a `?` (click again to show); the setting is shared between both windows and remembered. Viewer counts also read `0` instead of a dash while you're live.
+- **Fixed the Kick dashboard badge** reading "Connected" instead of "LIVE" while live.
+
+---
+
 ### 2.0.1 — 2026-10-19 — Window Snapping & Activity Window
 
 - **Window snapping, refined** — the **Chat, Activity, and Stats** pop-out windows snap together more crisply (a wider, snappier magnet). You can **slide** snapped windows along a shared edge to line them up, and **drag a window away to detach** it. **Minimizing the chat pop-out hides its snapped group with it**, and they return where you left them. Toggle it under **Appearance**.
