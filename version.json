@@ -1,8 +1,20 @@
 {
-  "version": "2.1.1",
-  "release_date": "2026-11-02",
+  "version": "2.1.2",
+  "release_date": "2026-11-05",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "2.1.2",
+      "date": "2026-11-05",
+      "github_tag": "v2.1.2",
+      "github_title": "plagComms v2.1.2 - YouTube reconnect + lighter API usage",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v2.1.2/plagComms-Setup-2.1.2.exe",
+      "notes": [
+        "IMPORTANT - YouTube needs a one-time reconnect. This update moves plagComms to a new Google sign-in, so the first time you open it you'll need to reconnect YouTube once (Settings - YouTube - Reconnect / Log in with Google). After that it stays connected automatically. Twitch, TikTok and Kick are unaffected.",
+        "Lighter YouTube API usage - while you're live, plagComms now checks for new YouTube subscribers every 3 minutes instead of every minute. That cuts its YouTube API usage a lot (helpful because all plagComms installs share one quota pool). New-subscriber alerts may just arrive up to a couple of minutes later.",
+        "plagComms now reports a small usage summary - your channel plus a count of how many YouTube API calls it made, by type - so the shared YouTube quota can be monitored and kept healthy for everyone. It contains no chat messages and no personal data beyond your channel name, just call counts."
+      ]
+    },
     {
       "version": "2.1.1",
       "date": "2026-11-02",
