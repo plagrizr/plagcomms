@@ -194,6 +194,28 @@ Revoke access at any time at [Twitch → Settings → Connections](https://www.t
 
 ## Changelog
 
+### 2.2.0 — 2026-11-20 — Redesigned Settings, plagin updates, global hotkeys
+
+- **Redesigned Settings** — the platform settings no longer hide in a sidebar tree. Open **Settings** and page between **General · Twitch · TikTok · YouTube · Kick · Debug** from a single row of tabs across the top, each with its platform logo. Everything's one click away instead of buried in a collapsible menu.
+- **NEW — hide the platforms you don't use** — a **Pages** control on the **General** tab lets you switch off any platform you don't stream on. A hidden platform disappears from **both** the Settings tabs and the Dashboard, so your workspace only shows what you actually use. Turn it back on there anytime.
+- **NEW — Debug tab** — the per-platform debug-logging switches and the live **Activity Log** now live together on their own **Debug** tab, keeping the rest of Settings clean.
+- **NEW — plagin updates** — plagComms now notices when one of your installed plagins has a newer version in the store. A gold **(N)** badge appears on the sidebar (**Add-Ons** and **Plagins**), and each out-of-date plagin shows an **Update** button that pulls the new version in one click (stopping/restarting it as needed).
+- **NEW — global hotkeys for plagins** — plagins can register **system-wide** hotkeys that fire even while you're focused on your game, not just when the plagin's window is up. (Your plagins can adopt this for timer / skip / exit keys.)
+- **Raid, faster** — after you send a raid, the button turns into **"Raid Now on Twitch ↗"** and jumps you straight to Stream Manager, so you can skip Twitch's ~90-second countdown without hunting for the button. (Twitch's API has no way to skip it directly — this is the fastest supported path.)
+- **Dashboard tidy-up** — the **Pop Out Chat / Stats / Activity** buttons moved up beside the "Dashboard" title, and the **server status** moved into the always-visible sidebar (above a version-and-About row). The page now fits without scrolling.
+- **Fixed** — the hype-train banner resizes with the chat pop-out immediately instead of staying stuck at the old width, and windows **snapped** to the pop-out now follow when you widen it.
+- **Removed the manual "Sync Emotes" button** — the emote library already syncs to add-ons automatically (on connect, on every change, and after a flush), so the button wasn't doing anything you needed.
+
+---
+
+### 2.1.2 — 2026-11-05 — YouTube reconnect + lighter API usage
+
+- **One-time YouTube reconnect** — this update moves plagComms to a new Google sign-in, so the first time you open it you'll need to reconnect YouTube once (**Settings ▸ YouTube ▸ Reconnect / Log in with Google**). After that it stays connected automatically. Twitch, TikTok and Kick are unaffected.
+- **Lighter YouTube API usage** — while you're live, plagComms now checks for new YouTube subscribers every **3 minutes** instead of every minute, cutting its YouTube API usage a lot (all installs share one quota pool). New-subscriber alerts may just arrive up to a couple of minutes later.
+- **Shared-quota health reporting** — plagComms now reports a small usage summary (your channel plus a count of how many YouTube API calls it made, by type) so the shared YouTube quota can be kept healthy for everyone. No chat messages and no personal data beyond your channel name — just call counts.
+
+---
+
 ### 2.1.1 — 2026-11-02 — Shared Canvas Overlay, quota-free YouTube & reliability fixes
 
 - **NEW — Shared Canvas Overlay** — one transparent full-screen overlay that your plagins output onto, so you add a **single** OBS browser source instead of one per plagin. There's one canvas per orientation: add `http://localhost:54473/canvas?o=landscape` (1920×1080) or `http://localhost:54473/canvas?o=portrait` (1080×1920) as a Browser Source **above your chat**.

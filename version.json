@@ -1,8 +1,26 @@
 {
-  "version": "2.1.2",
-  "release_date": "2026-11-05",
+  "version": "2.2.0",
+  "release_date": "2026-11-20",
   "download_url": "https://github.com/plagrizr/plagcomms/releases/latest",
   "changelog": [
+    {
+      "version": "2.2.0",
+      "date": "2026-11-20",
+      "github_tag": "v2.2.0",
+      "github_title": "plagComms v2.2.0 - redesigned Settings, plagin updates, global hotkeys",
+      "asset_url": "https://github.com/plagrizr/plagcomms/releases/download/v2.2.0/plagComms-Setup-2.2.0.exe",
+      "notes": [
+        "Redesigned Settings - the platform settings no longer hide in a sidebar tree. Open Settings and page between General, Twitch, TikTok, YouTube, Kick and Debug from a single row of tabs across the top, each with its platform logo.",
+        "Hide the platforms you don't use - a new 'Pages' control on the General tab lets you turn off any platform you don't stream on. A hidden platform disappears from both the Settings tabs and the Dashboard, and you can turn it back on anytime.",
+        "New Debug tab - the per-platform debug logging switches and the live Activity Log now live together on their own Debug tab, so the rest of Settings stays uncluttered.",
+        "Plagin updates - plagComms now notices when one of your installed plagins has a newer version in the store: a gold (N) badge appears on the sidebar (Add-Ons and Plagins), and each out-of-date plagin shows an 'Update' button that pulls the new version in one click.",
+        "Global hotkeys for plagins - plagins can now register system-wide hotkeys that fire even while you're focused on your game (not just when the plagin window is up). Your plagins can adopt this for timer/skip/exit keys.",
+        "Raid, faster - after you send a raid, the button turns into 'Raid Now on Twitch' and jumps you straight to Stream Manager, so you can skip Twitch's ~90-second countdown without hunting for the button.",
+        "Dashboard tidy-up - the Pop Out Chat / Stats / Activity buttons moved up beside the 'Dashboard' title, and the server status moved into the always-visible sidebar (above a version-and-About row). The page now fits without scrolling.",
+        "Fixed - the hype-train banner resizes with the chat pop-out right away instead of staying stuck at the old width, and windows snapped to the pop-out now follow when you widen it.",
+        "Removed the manual 'Sync Emotes' button - the emote library already syncs to add-ons automatically (on connect, on changes, and after a flush), so the button wasn't needed."
+      ]
+    },
     {
       "version": "2.1.2",
       "date": "2026-11-05",
